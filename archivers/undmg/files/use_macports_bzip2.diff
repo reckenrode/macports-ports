@@ -1,0 +1,18 @@
+diff --git a/Makefile b/Makefile
+index 9e06527..e666c5d 100644
+--- Makefile
++++ Makefile
+@@ -5,11 +5,11 @@ LD = $(CC)
+ OUT=undmg
+ SRC=$(wildcard *.c)
+ OBJ=$(SRC:.c=.o)
+-LIB=$(shell $(PKG_CONFIG) --libs zlib) $(shell $(PKG_CONFIG) --libs bzip2) -llzfse -lc
++LIB=$(shell $(PKG_CONFIG) --libs zlib) -lbz2 -llzfse -lc
+ PREFIX=/usr/local
+ TARGET=$(PREFIX)/bin/$(OUT)
+ LDFLAGS=
+-CFLAGS=$(shell $(PKG_CONFIG) --cflags zlib) $(shell $(PKG_CONFIG) --cflags bzip2)
++CFLAGS=$(shell $(PKG_CONFIG) --cflags zlib)
+ 
+ .PHONY: all
+ all: $(OUT)

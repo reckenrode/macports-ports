@@ -1,0 +1,40 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+# vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        matthewbauer undmg 1.1.0 v
+
+categories          archivers
+maintainers         largeandhighquality.com:randy
+
+description         Extract a DMG file
+long_description    Extracts the contents of a DMG file.  Does not support APFS DMG images.
+
+platforms           darwin
+license             GPL-3
+
+checksums           rmd160  45e111c51f5ea718ee04eb9f5884a12b7a08244c \
+                    sha256  79de0cf27f2a0237daa94069b22d463f254f13aba84b87481c03d7c8578f9b2e \
+                    size    81155
+
+depends_lib         port:bzip2 \
+                    port:zlib \
+                    port:lzfse
+
+depends_build       port:pkgconfig
+
+patchfiles          use_macports_bzip2.diff
+
+use_configure       no
+
+destroot.post_args  PREFIX=${destroot}${prefix}
+
+post-destroot {
+    set docsdir ${destroot}${prefix}/share/doc/${subport}
+    xinstall -d -m 755 ${docsdir}
+    xinstall -m 644 -W ${worksrcpath} \
+        LICENSE \
+        README.md \
+        ${docsdir}
+}
