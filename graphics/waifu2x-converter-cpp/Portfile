@@ -1,0 +1,51 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           cmake 1.1
+PortGroup           github 1.0
+
+github.setup        DeadSix27 waifu2x-converter-cpp 5.3.4 v
+
+categories          graphics
+maintainers         largeandhighquality.com:randy
+
+description         Improved fork of Waifu2X C++ using OpenCL and OpenCV
+long_description    This is a reimplementation of waifu2x (original) converter function, \
+                    in C++, using OpenCV. This is also a reimplementation of waifu2x python \
+                    version by Hector Martin. You can use this as command-line tool of image \
+                    noise reduction or/and scaling.
+
+checksums           rmd160  6a49b401db420e1cd02c9e9176242dbfe560a88a \
+                    sha256  2e2177704637fd6b06c09e251a265c722307dd3d902416b29b09bfd5d1a1b1d7 \
+                    size    12532244
+
+platforms           darwin
+license             MIT
+
+patchfiles          patch-use-xcode-clang.diff
+
+configure.args-append \
+    -DENABLE_CUDA=OFF \
+    -DENABLE_OPENCV=OFF
+
+build.args-append \
+    GIT_TAG=${version} \
+    GIT_COMMIT_HASH=27ad20e \
+    GIT_BRANCH=master
+
+variant opencv3 conflicts opencv4 description {Enable OpenCV support using OpenCV3} {
+    depends_lib     port:opencv3
+    configure.args-replace \
+        -DENABLE_OPENCV=OFF \
+        -DENABLE_OPENCV=ON
+    configure.env   OpenCV_DIR=${prefix}/libexec/opencv3/cmake/
+}
+
+variant opencv4 conflicts opencv3 description {Enable OpenCV support using OpenCV4} {
+    depends_lib     port:opencv4
+    configure.args-replace \
+        -DENABLE_OPENCV=OFF \
+        -DENABLE_OPENCV=ON
+    configure.env   OpenCV_DIR=${prefix}/libexec/opencv4/cmake/
+}
+
+default_variants +opencv4
