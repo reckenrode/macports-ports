@@ -4,6 +4,7 @@ PortSystem          1.0
 
 name                pngout
 version             20200115
+revision            1
 
 categories          graphics
 maintainers         largeandhighquality.com:randy
@@ -33,5 +34,7 @@ use_configure       no
 build {}
 
 destroot {
+    xinstall -d -m 755 ${destroot}${prefix}/share/doc/${subport}
+    xinstall -m 644 ${worksrcpath}/readme.txt ${destroot}${prefix}/share/doc/${subport}
     xinstall -m 755 ${worksrcpath}/pngout ${destroot}${prefix}/bin
 }
