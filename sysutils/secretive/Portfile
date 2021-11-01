@@ -5,7 +5,7 @@ PortGroup           github 1.0
 
 github.setup        maxgoedjen secretive 2.1.1 v
 
-categories          sysutils
+categories          aqua sysutils
 maintainers         largeandhighquality.com:randy
 
 description         Store SSH keys in the Secure Enclave
@@ -13,7 +13,7 @@ long_description    Secretive is an app for storing and managing SSH keys in the
                     It is inspired by the sekey project, but rewritten in Swift with no external \
                     dependencies and with a handy native management app.
 
-platforms           darwin
+platforms           macosx
 license             MIT
 
 distname            Secretive
