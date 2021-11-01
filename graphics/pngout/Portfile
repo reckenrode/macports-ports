@@ -1,0 +1,37 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+# vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+
+name                pngout
+version             20200115
+
+categories          graphics
+maintainers         largeandhighquality.com:randy
+
+description         PNGOUT produces extremely well-compressed PNG images
+long_description    PNGOUT optimizes the size of .PNG files losslessly. It uses the same deflate \
+                    compressor Ken wrote for KZIP.  With the right options, it can often beat \
+                    other programs by 5-10%.  That includes pngcrush -brute, optipng -o7, \
+                    advpng -z4, etc..  PNGOUT is a great tool for optimizing the size of web pages \
+                    or squeezing game content onto mobile devices.
+
+platforms           darwin
+license             Restrictive
+
+homepage            http://www.advsys.net/ken/utils.htm
+
+distname            pngout-${version}-macos
+master_sites        http://www.jonof.id.au/files/kenutils/
+use_zip             yes
+
+checksums           rmd160  9a25be05d5b81a50dda4e66f8a35146789a74340 \
+                    sha256  3272fa947eeafc1ac0086e1f14935f9efa21d090a555e6892255fe5c88f6686e \
+                    size    63181
+
+use_configure       no
+
+build {}
+
+destroot {
+    xinstall -m 755 ${worksrcpath}/pngout ${destroot}${prefix}/bin
+}
