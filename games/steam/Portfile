@@ -4,6 +4,7 @@ PortSystem          1.0
 
 name                steam
 version             4.0
+revision            1
 
 categories          aqua games
 maintainers         largeandhighquality.com:randy
@@ -38,3 +39,13 @@ build {}
 destroot {
     copy ${worksrcpath}/Steam.app ${destroot}${applications_dir}
 }
+
+variant bigsur_icon description {Replace the icon with one that fits in better with macOS 11+} {
+    post-destroot {
+        set icon_path ${destroot}${applications_dir}/Steam.app/Contents/Resources/Steam.icns
+        delete ${icon_path}
+        copy ${filespath}/steam.icns ${icon_path}
+    }
+}
+
+default_variants +bigsur_icon
