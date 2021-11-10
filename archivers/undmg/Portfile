@@ -38,3 +38,5 @@ post-destroot {
         README.md \
         ${docsdir}
 }
+
+variant universal {}
