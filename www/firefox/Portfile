@@ -1,0 +1,43 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+# vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+
+name                firefox
+version             94.0.1
+
+categories          aqua www
+maintainers         largeandhighquality.com:randy
+
+description         RSS reader for macOS and iOS
+long_description    NetNewsWire shows you articles from your favorite blogs and news sites and \
+                    keeps track of what you’ve read.
+
+platforms           macosx
+license             MPL-2
+
+distfiles           "Firefox ${version}.dmg"
+master_sites        "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/en-US"
+
+checksums           rmd160  c709b0e012879f00724f7d80d8744eaa2986df66 \
+                    sha256  e49efcf2295fc0ca3b912355c12cb2a2118c67cf654ad2f4527e67632aaa4ee7 \
+                    size    129572812
+
+depends_extract     port:undmg
+
+extract.cmd         undmg
+extract.mkdir       yes
+extract.pre_args
+extract.post_args
+extract.suffix      .dmg
+
+use_configure       no
+
+build {
+    set fd [open ${worksrcpath}/Firefox.app/Contents/Resources/defaults/pref/channel-prefs.js a]
+    puts $fd {pref("app.update.auto", "false");}
+    close $fd
+}
+
+destroot {
+    copy ${worksrcpath}/Firefox.app ${destroot}${applications_dir}
+}
