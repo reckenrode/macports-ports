@@ -4,6 +4,7 @@ PortSystem          1.0
 
 name                vscode
 version             1.62.0
+revision            1
 
 categories          aqua editors
 maintainers         largeandhighquality.com:randy
@@ -54,4 +55,7 @@ build {}
 
 destroot {
     copy "${worksrcpath}/Visual Studio Code.app" ${destroot}${applications_dir}
+    system "ln -sf \
+        \"${applications_dir}/Visual Studio Code.app/Contents/Resources/app/bin/code\" \
+        \"${destroot}${prefix}/bin/code\""
 }
