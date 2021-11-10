@@ -4,6 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        matthewbauer undmg 1.1.0 v
+revision            1
 
 categories          archivers
 maintainers         largeandhighquality.com:randy
