@@ -1,0 +1,25 @@
+#!/bin/dash
+
+set -euf
+
+version="$1"
+
+working_dir=$(mktemp -d)
+
+cleanup() {
+    cd - > /dev/null
+    rm -rf "$working_dir"
+}
+trap cleanup EXIT 2 3 9 15
+
+url="https://update.code.visualstudio.com/$version/"
+
+cd "$working_dir"
+for target in darwin-universal darwin darwin-arm64; do
+    echo "Fetching $target"
+    curl -OL "$url/$target/stable"
+    echo "    master_sites    $url/$target"
+    echo "    checksums       rmd160 $(openssl rmd160 -r stable | awk '{print $1}') \\"
+    echo "                    sha256 $(openssl sha256 -r stable | awk '{print $1}') \\"
+    echo "                    size $(ls -l stable | awk '{print $5}')"
+done

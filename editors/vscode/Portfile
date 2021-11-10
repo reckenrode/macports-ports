@@ -1,0 +1,57 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+# vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+
+name                vscode
+version             1.62.0
+
+categories          aqua editors
+maintainers         largeandhighquality.com:randy
+
+description         Free and extensible built on open source.
+long_description    Visual Studio Code is a streamlined code editor with support for development \
+                    operations like debugging, task running, and version control. It aims to \
+                    provide just the tools a developer needs for a quick code-build-debug cycle \
+                    and leaves more complex workflows to fuller featured IDEs, such as \
+                    Visual Studio IDE.
+
+platforms           macosx
+supported_archs     arm64 x86_64
+license             MIT Restrictive
+
+homepage            https://code.visualstudio.com
+
+distname            stable
+
+variant universal   {
+    master_sites    https://update.code.visualstudio.com/${version}/darwin-universal/
+    checksums       rmd160 de41f9a110da43572d053b07f80f3f97b624c7ca \
+                    sha256 6ac912118bcf6d03aac105fadb936539dcd6e55d33a5cd2521d5de2d5f5885c6 \
+                    size 179322789
+}
+
+platform x86_64 {
+    master_sites    https://update.code.visualstudio.com/${version}/darwin/
+    checksums       rmd160 bb3b328b546c4adccabbd53bae8c0c02a58fe666 \
+                    sha256 130472776b786ef294d745aebc3c60256a4b3de74e24de0170fa05327894a06f \
+                    size 108803962
+}
+
+platform arm {
+    master_sites    https://update.code.visualstudio.com/${version}/darwin-arm64/
+    checksums       rmd160 c5d88cbf638c03a05343fe293eb2b53f70f61ca9 \
+                    sha256 c0e048aa05d7c971d29240cd2ae330d375e619fb0533dcecda05d13948799d86 \
+                    size 109524929
+}
+
+use_zip             yes
+extract.mkdir       yes
+extract.suffix
+
+use_configure       no
+
+build {}
+
+destroot {
+    copy "${worksrcpath}/Visual Studio Code.app" ${destroot}${applications_dir}
+}
