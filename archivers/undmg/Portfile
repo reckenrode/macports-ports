@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        matthewbauer undmg 1.1.0 v
-revision            1
+revision            2
 
 categories          archivers
 maintainers         largeandhighquality.com:randy
@@ -25,7 +25,8 @@ depends_lib         port:bzip2 \
 
 depends_build       port:pkgconfig
 
-patchfiles          use_macports_bzip2.diff
+patchfiles          use_macports_bzip2.diff \
+                    universal_build.diff
 
 use_configure       no
 
@@ -40,4 +41,6 @@ post-destroot {
         ${docsdir}
 }
 
-variant universal {}
+variant universal {
+    build.post_args {UNIVERSAL_CFLAGS="-arch x86_64 -arch arm64" LDFLAGS="-arch x86_64 -arch arm64"}
+}

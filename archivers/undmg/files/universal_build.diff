@@ -1,0 +1,11 @@
+--- Makefile	2021-11-09 22:41:32.000000000 -0500
++++ Makefile	2021-11-09 22:42:37.000000000 -0500
+@@ -9,7 +9,7 @@
+ PREFIX=/usr/local
+ TARGET=$(PREFIX)/bin/$(OUT)
+ LDFLAGS=
+-CFLAGS=$(shell $(PKG_CONFIG) --cflags zlib)
++CFLAGS=$(shell $(PKG_CONFIG) --cflags zlib) $(UNIVERSAL_CFLAGS)
+ 
+ .PHONY: all
+ all: $(OUT)
