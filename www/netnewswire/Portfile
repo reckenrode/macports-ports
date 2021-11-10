@@ -1,0 +1,35 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+# vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           github 1.0
+
+name                netnewswire
+github.setup        Ranchero-Software NetNewsWire 6.0.3 mac-
+
+categories          aqua www
+maintainers         largeandhighquality.com:randy
+
+description         RSS reader for macOS and iOS
+long_description    NetNewsWire shows you articles from your favorite blogs and news sites and \
+                    keeps track of what you’ve read.
+
+platforms           macosx
+license             MIT
+
+distname            ${github.project}${github.version}
+github.tarball_from releases
+use_zip             yes
+
+checksums           rmd160  eb9e8106650b7f2129d017cb4c69c54accdf5319 \
+                    sha256  d1eaf3776dcc75ad260cfa14bd5b8f6cb3b572c84ac01b545fe6ccf1a609777c \
+                    size    10477066
+
+extract.mkdir       yes
+
+use_configure       no
+
+build {}
+
+destroot {
+    copy ${worksrcpath}/${subport}.app ${destroot}${applications_dir}
+}
