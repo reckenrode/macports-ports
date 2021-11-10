@@ -25,7 +25,7 @@ checksums           rmd160  ad338ebf886286c8f264151aa27bd3fdbad8c2e7 \
                     sha256  f3a581f7772484500b3f5a271c31f891b6b4b1ac818255dfd9c3ad5dbe104a5e \
                     size    3375945
 
-depends_build       undmg
+depends_build       port:undmg
 
 use_configure       no
 
