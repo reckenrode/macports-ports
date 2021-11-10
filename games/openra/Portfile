@@ -1,0 +1,55 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+# vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           github 1.0
+
+name                openra
+github.setup        OpenRA OpenRA 20210321 release-
+
+categories          aqua games
+maintainers         largeandhighquality.com:randy
+
+description         Open source RTS game engine
+long_description    OpenRA is an open source project that recreates and modernizes classic real \
+                    time strategy games, like Red Alert, Command & Conquer, and Dune 2000.
+
+platforms           macosx
+supported_archs     x86_64
+license             GPL-3
+
+distname            ${github.project}-${github.tag_prefix}${github.version}
+github.tarball_from releases
+
+checksums           rmd160  afa6ea7bf63ccdb0eaac35b1d465ec07c25c7b61 \
+                    sha256  20346073731e3dc0ccfc79ce05abe2e1e3a9d815fb945c0683169d455c6c1004 \
+                    size    63743527
+
+variant tiberian_dawn description {Install Tiberian Dawn mod for OpenRA} {}
+variant red_alert description {Install Red Alert mod for OpenRA} {}
+variant dune_2000 description {Install Dune 2000 mod for OpenRA} {}
+
+depends_extract     port:undmg
+
+extract.cmd         undmg
+extract.mkdir       yes
+extract.pre_args
+extract.post_args
+extract.suffix      .dmg
+
+use_configure       no
+
+build {}
+
+destroot {
+    if [variant_isset tiberian_dawn] {
+        copy "${worksrcpath}/OpenRA - Tiberian Dawn.app" ${destroot}${applications_dir}
+    }
+    if [variant_isset red_alert] {
+        copy "${worksrcpath}/OpenRA - Red Alert.app" ${destroot}${applications_dir}
+    }
+    if [variant_isset dune_2000] {
+        copy "${worksrcpath}/OpenRA - Dune 2000.app" ${destroot}${applications_dir}
+    }
+}
+
+default variant +tiberian_dawn
