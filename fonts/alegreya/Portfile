@@ -17,6 +17,7 @@ long_description    Alegreya is a typeface originally intended for literature. A
                     contemporary typographic language.
 
 platforms           darwin
+supported_archs     noarch
 license             OFL-1.1
 
 checksums           rmd160  3342aaa12d5de3d0adfb69258aaa52721447153a \

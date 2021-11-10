@@ -15,6 +15,7 @@ long_description    Alegreya Sans is a humanist sans serif family with a calligr
                     readers of long texts.
 
 platforms           darwin
+supported_archs     noarch
 license             OFL-1.1
 
 checksums           rmd160  8bfe659ac2ceb552af6c3e5becf51f4ef6fee912 \
