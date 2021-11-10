@@ -1,0 +1,37 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+# vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+
+name                daisydisk
+version             4.21.4
+
+categories          aqua sysutils
+maintainers         largeandhighquality.com:randy
+
+description         Analyze disks and clean up used space
+long_description    DaisyDisk displays an interactive map of your disks, which allows you to see \
+                    where your disk’s space is being used.  It allows you to delete files and \
+                    other content (such as snapshots) to free up space.
+
+platforms           macosx
+supported_archs     x86_64 arm64
+license             Restrictive
+
+homepage            https://daisydiskapp.com
+
+distname            DaisyDisk
+master_sites        https://daisydiskapp.com/downloads/
+use_zip             yes
+extract.mkdir       yes
+
+checksums           rmd160  320a21b896d1139549133bab0ab10b24d5dea551 \
+                    sha256  48a2637a66464d216af85583e1c715ed4511299e08bfb497855d3d740fd4c09d \
+                    size    8901486
+
+use_configure       no
+
+build {}
+
+destroot {
+    copy ${worksrcpath}/DaisyDisk.app ${destroot}${applications_dir}
+}
