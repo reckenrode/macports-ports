@@ -6,7 +6,7 @@ name                vscode
 version             1.62.0
 revision            2
 
-categories          aqua editors
+categories          editors aqua
 maintainers         largeandhighquality.com:randy
 
 description         Free and extensible built on open source.
@@ -31,7 +31,7 @@ variant universal   {
                     size 179322789
 }
 
-platform x86_64 {
+platform i386 {
     master_sites    https://update.code.visualstudio.com/${version}/darwin/
     checksums       rmd160 bb3b328b546c4adccabbd53bae8c0c02a58fe666 \
                     sha256 130472776b786ef294d745aebc3c60256a4b3de74e24de0170fa05327894a06f \
