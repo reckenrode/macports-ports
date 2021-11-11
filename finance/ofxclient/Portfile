@@ -1,0 +1,51 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           python 1.0
+
+name                ofxclient
+github.setup        captin411 ofxclient 2.0.4 v
+
+categories          finances python
+maintainers         largeandhighquality.com:randy
+
+description         Bank transaction downloader
+long_description    ${description}
+
+platforms           darwin
+supported_archs     noarch
+license             MIT
+
+distname            ${github.tag_prefix}${github.version}
+
+checksums           rmd160  0f5aaba7aea382439cd5d87c2daf9eddf381993a \
+                    sha256  8f395c02b3f42d4a0cd1c989890bcefef192d00a9334c9267c52723c70b7e57c \
+                    size    19234
+
+python.versions     36 37 38 39 310
+
+variant python36 conflicts python37 python38 python39 python310 description {Use Python 3.6} {}
+variant python37 conflicts python36 python38 python39 python310 description {Use Python 3.7} {}
+variant python38 conflicts python36 python37 python39 python310 description {Use Python 3.8} {}
+variant python39 conflicts python36 python37 python38 python310 description {Use Python 3.9} {}
+variant python310 conflicts python36 python37 python38 python39 description {Use Python 3.10} {}
+
+if {![variant_isset python36] && ![variant_isset python37] && ![variant_isset python38] \
+        && ![variant_isset python39] && ![variant_isset python310]} {
+    default_variants +python39
+}
+
+foreach ver {36 37 38 39 310} {
+    if {[variant_isset python${ver}]} {
+        python.default_version  ${ver}
+        break
+    }
+}
+
+depends_lib         port:py${python.version}-ofxclient
+
+depends_build       port:py${python.version}-setuptools
+
+post-destroot {
+    delete -force ${destroot}${python.pkgd}
+}

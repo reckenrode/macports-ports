@@ -1,0 +1,42 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           python 1.0
+
+name                py-ofxclient
+github.setup        captin411 ofxclient 2.0.4 v
+
+categories-append   devel
+maintainers         largeandhighquality.com:randy
+
+description         Bank transaction downloader and python OFX client libraries
+long_description    ${description}
+
+platforms           darwin
+supported_archs     noarch
+license             MIT
+
+distname            ${github.tag_prefix}${github.version}
+
+checksums           rmd160  0f5aaba7aea382439cd5d87c2daf9eddf381993a \
+                    sha256  8f395c02b3f42d4a0cd1c989890bcefef192d00a9334c9267c52723c70b7e57c \
+                    size    19234
+
+python.versions     36 37 38 39 310
+
+if {${name} ne ${subport}} {
+    depends_lib         port:py${python.version}-beautifulsoup4 \
+                        port:py${python.version}-keyring \
+                        port:py${python.version}-lxml \
+                        port:py${python.version}-ofxhome \
+                        port:py${python.version}-ofxparse \
+                        port:py${python.version}-pycrypto
+    
+    depends_build       port:py${python.version}-setuptools
+
+    python.link_binaries    no
+
+    post-destroot {
+        delete ${destroot}${python.prefix}/bin/ofxclient
+    }
+}
