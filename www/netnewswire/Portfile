@@ -6,7 +6,7 @@ PortGroup           github 1.0
 name                netnewswire
 github.setup        Ranchero-Software NetNewsWire 6.0.3 mac-
 
-categories          aqua www
+categories          www aqua
 maintainers         largeandhighquality.com:randy
 
 description         RSS reader for macOS and iOS

@@ -6,7 +6,7 @@ PortGroup           haskell_stack 1.0
 
 github.setup        simonmichael hledger 1.23
 
-categories          finances
+categories          finance
 maintainers         largeandhighquality.com:randy
 
 description         Plain Text Accounting system where your data is stored in a plain text file

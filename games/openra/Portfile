@@ -6,7 +6,7 @@ PortGroup           github 1.0
 name                openra
 github.setup        OpenRA OpenRA 20210321 release-
 
-categories          aqua games
+categories          games
 maintainers         largeandhighquality.com:randy
 
 description         Open source RTS game engine

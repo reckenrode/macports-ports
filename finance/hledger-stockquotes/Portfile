@@ -6,7 +6,7 @@ PortGroup           haskell_stack 1.0
 
 github.setup        prikhi hledger-stockquotes 0.1.2.0
 
-categories          finances
+categories          finance
 maintainers         largeandhighquality.com:randy
 
 description         Generate an hledger journal containing stock/crypto prices for your commodities

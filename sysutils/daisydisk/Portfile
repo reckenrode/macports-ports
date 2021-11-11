@@ -5,7 +5,7 @@ PortSystem          1.0
 name                daisydisk
 version             4.21.4
 
-categories          aqua sysutils
+categories          sysutils aqua
 maintainers         largeandhighquality.com:randy
 
 description         Analyze disks and clean up used space

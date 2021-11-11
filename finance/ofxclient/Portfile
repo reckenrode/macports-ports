@@ -7,7 +7,7 @@ PortGroup           python 1.0
 name                ofxclient
 github.setup        captin411 ofxclient 2.0.4 v
 
-categories          finances python
+categories          finance python
 maintainers         largeandhighquality.com:randy
 
 description         Bank transaction downloader

@@ -5,7 +5,7 @@ PortGroup           github 1.0
 
 github.setup        maxgoedjen secretive 2.1.1 v
 
-categories          aqua sysutils
+categories          sysutils aqua
 maintainers         largeandhighquality.com:randy
 
 description         Store SSH keys in the Secure Enclave

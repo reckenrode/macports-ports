@@ -5,12 +5,14 @@ PortSystem          1.0
 name                firefox
 version             94.0.1
 
-categories          aqua www
+categories          www aqua
 maintainers         largeandhighquality.com:randy
 
 description         RSS reader for macOS and iOS
 long_description    NetNewsWire shows you articles from your favorite blogs and news sites and \
                     keeps track of what you’ve read.
+
+homepage            https://www.mozilla.org/firefox/
 
 platforms           macosx
 license             MPL-2
