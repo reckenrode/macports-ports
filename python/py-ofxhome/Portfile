@@ -1,0 +1,29 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           python 1.0
+
+name                py-ofxhome
+github.setup        captin411 ofxhome 0.3.3 v
+
+categories-append   devel finances
+maintainers         largeandhighquality.com:randy
+
+description         Bank transaction downloader and python OFX client libraries
+long_description    ${description}
+
+platforms           darwin
+supported_archs     noarch
+license             MIT
+
+distname            ${github.tag_prefix}${github.version}
+
+checksums           rmd160  8c9f51b82ddf32f9633b6635c2465eefb7d9fde9 \
+                    sha256  92967547703f06c42183a583d9e81f2803196cec75bf555005c095270a3c013c \
+                    size    5412
+    
+python.versions     36 37 38 39 310
+
+if {${name} ne ${subport}} {
+    depends_build   port:py${python.version}-setuptools
+}
