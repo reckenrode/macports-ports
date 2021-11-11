@@ -1,0 +1,27 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           python 1.0
+
+name                py-pycrypto
+github.setup        pycrypto pycrypto 2.6.1 v
+
+categories-append   devel
+maintainers         largeandhighquality.com:randy
+
+description         The Python Cryptography Toolkit
+long_description    This is a collection of both secure hash functions (such as SHA256 and \
+                    RIPEMD160), and various encryption algorithms (AES, DES, RSA, ElGamal, etc.).
+
+platforms           darwin
+license             public-domain
+
+checksums           rmd160  6111a13a047662ad821b59b11ba28546f42a87f8 \
+                    sha256  a90b9ed9a708b2a44a25b06e5003b99abff2d9edbcb11f5a18220b128c25ccee \
+                    size    452751
+   
+python.versions     36 37 38 39 310
+
+if {${name} ne ${subport}} {
+    depends_build   port:py${python.version}-setuptools
+}
