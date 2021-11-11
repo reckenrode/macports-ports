@@ -4,7 +4,7 @@ PortSystem          1.0
 
 name                vscode
 version             1.62.0
-revision            1
+revision            2
 
 categories          aqua editors
 maintainers         largeandhighquality.com:randy
@@ -45,13 +45,42 @@ platform arm {
                     size 109524929
 }
 
+variant python36 conflicts python37 python38 python39 python310 description {Use Python 3.6} {}
+variant python37 conflicts python36 python38 python39 python310 description {Use Python 3.7} {}
+variant python38 conflicts python36 python37 python39 python310 description {Use Python 3.8} {}
+variant python39 conflicts python36 python37 python38 python310 description {Use Python 3.9} {}
+variant python310 conflicts python36 python37 python38 python39 description {Use Python 3.10} {}
+
+if {![variant_isset python36] && ![variant_isset python37] && ![variant_isset python38] \
+        && ![variant_isset python39] && ![variant_isset python310]} {
+    default_variants +python39
+}
+
+foreach ver {36 37 38 39 310} {
+    if {[variant_isset python${ver}]} {
+        set python_version ${ver}
+        break
+    }
+}
+
+depends_run         port:bash \
+                    port:python${python_version}
+
 use_zip             yes
 extract.mkdir       yes
 extract.suffix
 
 use_configure       no
 
-build {}
+build {
+    # Don’t use the system python, which causes compatability prompts under macOS 12
+    set python_decimal_version [regsub {^3} ${python_version} "3."]
+    reinplace s|python|/opt/local/bin/python${python_decimal_version}| \
+        "${worksrcpath}/Visual Studio Code.app/Contents/Resources/app/bin/code"
+    # Don’t use the system bash since it is going away eventually.
+    reinplace s|/usr/bin/env\ bash|/opt/local/bin/bash| \
+        "${worksrcpath}/Visual Studio Code.app/Contents/Resources/app/bin/code"
+}
 
 destroot {
     copy "${worksrcpath}/Visual Studio Code.app" ${destroot}${applications_dir}
