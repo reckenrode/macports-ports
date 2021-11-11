@@ -1,0 +1,34 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           haskell_stack 1.0
+
+github.setup        prikhi hledger-stockquotes 0.1.2.0
+
+categories          finances
+maintainers         largeandhighquality.com:randy
+
+description         Generate an hledger journal containing stock/crypto prices for your commodities
+long_description    hledger-stockquotes is a CLI addon for hledger that reads a journal file and \
+                    pulls the historical prices for commodities from AlphaVantage. To use this \
+                    application, you’ll need a free AlphaVantage API key.
+
+platforms           darwin
+license             BSD
+
+distname            ${github.version}
+
+checksums           rmd160  a239d7cfd907e1574e72ddc864f47619061f4539 \
+                    sha256  3b60b58245709f10a6fcb8a0b966cc83956c29a2918027f0473d81c991c0a712 \
+                    size    12681
+
+post-destroot {
+    set docdir ${destroot}${prefix}/share/doc/${subport}/
+    xinstall -d -m 755 ${docdir}
+    xinstall -m 644 -W ${worksrcpath} \
+        CHANGELOG.md \
+        README.md \
+        LICENSE \
+        ${docdir}
+}
