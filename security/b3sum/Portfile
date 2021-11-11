@@ -6,6 +6,7 @@ PortGroup           github 1.0
 
 name                b3sum
 github.setup        BLAKE3-team BLAKE3 1.2.0
+revision            1
 
 categories          security
 maintainers         largeandhighquality.com:randy
@@ -26,6 +27,8 @@ checksums           ${distfiles} \
                     rmd160  f68c7af8bc562e6d18e3a83b081a303da3db788d \
                     sha256  97e49a6009acb62e0998111fbe13a5739df5d7ec06c92686bb9366b2294e032a \
                     size    213257
+
+depends_lib         port:libiconv
 
 patchfiles          cargo_lock.diff
 
