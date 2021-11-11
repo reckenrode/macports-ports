@@ -1,0 +1,33 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           python 1.0
+
+name                py-ofxparse
+github.setup        jseutter ofxparse 0.20
+
+categories-append   devel finances
+maintainers         largeandhighquality.com:randy
+
+description         OFX file format parser for Python
+long_description    ofxparse is a parser for Open Financial Exchange (.ofx) format files. OFX \
+                    files are available from almost any online banking site, so they work well if \
+                    you want to pull together your finances from multiple sources. Online trading \
+                    accounts also provide account statements in OFX files.
+
+platforms           darwin
+supported_archs     noarch
+license             MIT
+
+checksums           rmd160  6b8ca513e7f628d63c60aa597f25848b4928fa5b \
+                    sha256  bf71b06245099435e7db8c97fe1cb3bbc24150679197c6393c78423fbc113f84 \
+                    size    81385
+    
+python.versions     36 37 38 39 310
+
+if {${name} ne ${subport}} {
+    depends_lib     port:py${python.version}-beautifulsoup4 \
+                    port:py${python.version}-python-coveralls
+
+    depends_build   port:py${python.version}-setuptools
+}
