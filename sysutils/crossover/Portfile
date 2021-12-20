@@ -1,0 +1,83 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                crossover
+version             21.1.0
+
+categories          sysutils aqua
+maintainers         largeandhighquality.com:randy
+
+description         Windows compatability layer for macOS
+long_description    CrossOver is the easiest way to run many Microsoft applications on your Mac \
+                    without a clunky Windows emulator.
+
+platforms           macosx
+supported_archs     x86_64
+license             Restrictive
+
+homepage            https://codeweavers.com
+
+distfiles           crossover-${version}.zip
+
+master_sites        https://media.codeweavers.com/pub/crossover/cxmac/demo/ \
+                    https://media.macosicons.com/parse/files/macOSicons/
+use_zip             yes
+extract.mkdir       yes
+
+checksums           crossover-21.1.0.zip \
+                    rmd160  405abebba742492e00da974e16656bf95c01cd26 \
+                    sha256  3c130e2eb0fd3d552484f072dc20e665048698e7dffb06c4f3890013eff5749c \
+                    size    355858112
+
+depends_lib         port:ncurses
+
+use_configure       no
+
+extract {
+    system "${extract.cmd} ${extract.pre_args} ${distpath}/crossover-${version}.zip ${extract.post_args}"
+    copy ${distpath}/2db0bb2cacd0fd3d7644ab8a89cb14cd_CrossOver.icns ${worksrcpath}
+}
+
+build {
+    file delete -force "${worksrcpath}/CrossOver.app/Contents/Resources/CrossOver CD Helper.app"
+}
+
+destroot {
+    copy ${worksrcpath}/CrossOver.app ${destroot}${applications_dir}
+
+    # Fix rev-upgrade problems
+    set vkd3d_compiler "CrossOver.app/Contents/SharedSupport/CrossOver/CrossOver-Hosted Application/vkd3d-compiler"
+    set d3d12_dll "CrossOver.app/Contents/SharedSupport/CrossOver/lib64/wine/d3d12.dll.so"
+
+    system "install_name_tool \
+        -change /opt/cxoffice/lib64/libvkd3d-shader.1.dylib @rpath/libvkd3d-shader.1.dylib \
+        \"${destroot}${applications_dir}/${vkd3d_compiler}\""
+    system "codesign -f -s - \"${destroot}${applications_dir}/${vkd3d_compiler}\""
+
+    system "install_name_tool \
+        -change /opt/cxoffice/lib64/libvkd3d.1.dylib @rpath/libvkd3d.1.dylib \
+        ${destroot}${applications_dir}/${d3d12_dll}"
+    system "codesign -f -s - ${destroot}${applications_dir}/${d3d12_dll}"
+}
+
+variant bigsur_icon description {Replace the icon with one that fits in better with macOS 11+} {
+    distfiles-append  2db0bb2cacd0fd3d7644ab8a89cb14cd_CrossOver.icns
+
+    checksums-append  2db0bb2cacd0fd3d7644ab8a89cb14cd_CrossOver.icns \
+                      rmd160  f9facadd3dba38f6283657ebee5f06fc40102f8e \
+                      sha256  7bfb45b9dbcc3b48a04df83037cd6403089c2e21a5894742144aabfc09636677 \
+                      size    576021
+    
+    post-destroot {
+        set icon_path ${destroot}${applications_dir}/CrossOver.app/Contents/Resources/CrossOver.icns
+        delete ${icon_path}
+        copy ${worksrcpath}/2db0bb2cacd0fd3d7644ab8a89cb14cd_CrossOver.icns ${icon_path}
+    }
+}
+
+variant cdhelper description {Don’t remove the CrossOver CD helper application} {
+    build {}
+}
+
+default_variants +bigsur_icon
