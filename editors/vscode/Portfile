@@ -3,8 +3,7 @@
 PortSystem          1.0
 
 name                vscode
-version             1.62.0
-revision            2
+version             1.63.2
 
 categories          editors aqua
 maintainers         largeandhighquality.com:randy
@@ -26,23 +25,23 @@ distname            stable
 
 variant universal   {
     master_sites    https://update.code.visualstudio.com/${version}/darwin-universal/
-    checksums       rmd160 de41f9a110da43572d053b07f80f3f97b624c7ca \
-                    sha256 6ac912118bcf6d03aac105fadb936539dcd6e55d33a5cd2521d5de2d5f5885c6 \
-                    size 179322789
+    checksums       rmd160  2068d38e90c137660822f932758633c4d5d22e43 \
+                    sha256  e5c83a305e926d94d679f93a79430e45cc99744adce64a4d3d8297ba03a8d2c4 \
+                    size    179270270
 }
 
 platform i386 {
     master_sites    https://update.code.visualstudio.com/${version}/darwin/
-    checksums       rmd160 bb3b328b546c4adccabbd53bae8c0c02a58fe666 \
-                    sha256 130472776b786ef294d745aebc3c60256a4b3de74e24de0170fa05327894a06f \
-                    size 108803962
+    checksums       rmd160  5e8289ef97f5d9e3e9c8b322a47d460c2f668201 \
+                    sha256  1ef5957499ecbf92cc14fd9f49eef6251f3fc77c83babc8185c6f564a2886633 \
+                    size    108780547
 }
 
 platform arm {
     master_sites    https://update.code.visualstudio.com/${version}/darwin-arm64/
-    checksums       rmd160 c5d88cbf638c03a05343fe293eb2b53f70f61ca9 \
-                    sha256 c0e048aa05d7c971d29240cd2ae330d375e619fb0533dcecda05d13948799d86 \
-                    size 109524929
+    checksums       rmd160  d1cabedccbc5aad0f07b293b2263e2138f0779f2 \
+                    sha256  be22b8fcea0af2d2416f47fbe0cae7f8199f21ad0c3ba28402027752d4f93630 \
+                    size    109506689
 }
 
 variant python36 conflicts python37 python38 python39 python310 description {Use Python 3.6} {}
