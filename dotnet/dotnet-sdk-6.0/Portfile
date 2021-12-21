@@ -1,0 +1,59 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                dotnet-sdk-6.0
+version             6.0.101
+revision            0
+categories          dotnet devel
+license             MIT
+maintainers         {tsabirgaliev @tsabirgaliev} openmaintainer
+
+description         Core functionality needed to create .NET Core projects, that is \
+                    shared between Visual Studio and CLI
+
+long_description    .NET is a free, cross-platform, open source developer platform \
+                    for building many different types of applications. \
+                    \
+                    With .NET, you can use multiple languages, editors, and libraries \
+                    to build for web, mobile, desktop, games, and IoT.
+
+homepage            https://dotnet.microsoft.com/
+platforms           darwin
+supported_archs     x86_64 arm64
+
+platform i386 {
+    distname        dotnet-sdk-${version}-osx-x64
+    checksums       rmd160  c549c7a6f4749323115a6f2dff93ea86fd27cfe0 \
+                    sha256  283dc6e8a88bdcb93f26abb06dd73492aefe55caa27b84d112138b22ab2cf588 \
+                    size    172213725
+}
+
+platform arm {
+    distname        dotnet-sdk-${version}-osx-arm64
+    checksums       rmd160  9a1d14e84c1f6fdfbc656f0bfe754edd241ca4e8 \
+                    sha256  db13183a7c5c1ff1d8423c76ce3737447d7d51f0ee37b4ee533250603499f537 \
+                    size    166446556
+}
+
+master_sites        https://dotnetcli.azureedge.net/dotnet/Sdk/${version}/
+
+worksrcdir          ${name}-${version}
+extract.mkdir       yes
+
+use_configure       no
+
+depends_run         port:dotnet-cli \
+                    port:dotnet-runtime-6.0 \
+                    port:aspnetcore-runtime-6.0
+
+build {}
+
+destroot {
+    set dotnet_home ${prefix}/share/dotnet
+
+    # Create the target directory
+    xinstall -d ${destroot}${dotnet_home}/sdk
+
+    move ${worksrcpath}/sdk/${version} ${destroot}${dotnet_home}/sdk
+}

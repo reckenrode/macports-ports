@@ -1,0 +1,64 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                dotnet-cli
+version             6.0.1
+revision            0
+categories          dotnet
+license             MIT
+maintainers         {tsabirgaliev @tsabirgaliev} openmaintainer
+
+description         The .NET command-line interface (CLI) is a cross-platform toolchain \
+                    for developing, building, running, and publishing .NET applications.
+
+long_description    .NET is a free, cross-platform, open source developer platform \
+                    for building many different types of applications. \
+                    \
+                    With .NET, you can use multiple languages, editors, and libraries \
+                    to build for web, mobile, desktop, games, and IoT.
+
+homepage            https://dotnet.microsoft.com/
+platforms           darwin
+supported_archs     x86_64 arm64
+
+platform i386 {
+    distname        dotnet-runtime-${version}-osx-x64
+    checksums       rmd160  77996b39633b41ae723956e9e960b835c9cd710f \
+                    sha256  260e9d462980ec596c6e2a168a055ef96d1b4a3c5d7ce8877b09972a2f9f91fd \
+                    size    30076618
+}
+
+platform arm {
+    distname        dotnet-runtime-${version}-osx-arm64
+    checksums       rmd160  9090f4fdef736ada642f9a13ddf8570b073f18a5 \
+                    sha256  a80834b375fccf33f9e9583c052952afaad564d20532b5d736b4735d3e034705 \
+                    size    28157081
+}
+
+master_sites        https://dotnetcli.azureedge.net/dotnet/Runtime/${version}/
+
+worksrcdir          ${name}-${version}
+extract.mkdir       yes
+
+use_configure       no
+
+build {}
+
+destroot {
+    set dotnet_home ${prefix}/share/dotnet
+    set target ${destroot}${dotnet_home}
+
+    # Create the target directory
+    xinstall -d ${target}
+
+    # Copy over the needed elements of our directory tree
+    move ${worksrcpath}/dotnet \
+         ${worksrcpath}/ThirdPartyNotices.txt \
+         ${worksrcpath}/LICENSE.txt \
+         ${worksrcpath}/host \
+         ${target}
+
+    # Symlink dotnet into the bin directory
+    ln -s ${dotnet_home}/dotnet ${destroot}${prefix}/bin
+}
