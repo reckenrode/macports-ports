@@ -68,10 +68,25 @@ build.target        prod
 destroot.destdir    APPS=${destroot}${applications_dir}
 
 post-destroot {
+    set iterm_app ${destroot}${applications_dir}/iTerm2.app
     # Fix version number; see iTerm2/tools/updateVersion.py for version keys
     foreach {key} {CFBundleGetInfoString CFBundleShortVersionString CFBundleVersion} {
-        system "/usr/libexec/PlistBuddy -c \"Set :${key} ${version}\" ${destroot}${applications_dir}/iTerm2.app/Contents/Info.plist"
+        system "/usr/libexec/PlistBuddy -c \"Set :${key} ${version}\" ${iterm_app}/Contents/Info.plist"
     }
+    # Ad hoc sign to add entitlements and ensure TCC works properly on arm64
+    system "/usr/bin/codesign --deep -s - \
+        -i com.googlecode.iterm2 \
+        --entitlements ${worksrcpath}/iTerm2.entitlements \
+        ${iterm_app}"
+    system "/usr/bin/codesign -f -s - \
+        --entitlements ${worksrcpath}/plists/iTermServer.entitlements \
+        ${iterm_app}/Contents/MacOS/iTermServer"
+    system "/usr/bin/codesign -f -s - \
+        --entitlements ${worksrcpath}/iTerm2SandboxedWorker/iTerm2SandboxedWorker.entitlements \
+        ${iterm_app}/Contents/XPCServices/iTerm2SandboxedWorker.xpc"
+    system "/usr/bin/codesign -f -s - \
+        --entitlements ${worksrcpath}/pidinfo/pidinfo.entitlements \
+        ${iterm_app}/Contents/XPCServices/pidinfo.xpc"
 }
 
 minimum_xcodeversions {16 9.0 17 10.0 18 11.0}
