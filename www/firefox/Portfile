@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                firefox
-version             95.0.2
+version             96.0.1
 
 categories          www aqua
 maintainers         largeandhighquality.com:randy
@@ -18,11 +18,8 @@ platforms           macosx
 license             MPL-2
 
 distfiles           "Firefox ${version}.dmg"
-master_sites        "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/en-US"
 
-checksums           rmd160  5307db759fd9f9fa3e9505379bd0d984eb667226 \
-                    sha256  e823901d77c1db20afcd5270d159256a340974d808f98a3f2e8560dc04c58c57 \
-                    size    125299906
+source              ./Portfile.langs
 
 depends_extract     port:undmg
 
