@@ -4,6 +4,7 @@ set -euf
 
 version="$1"
 langs=$PWD/langs
+langs_out=$PWD/langs.tcl
 lang_count=`cat $langs | wc -l`
 
 working_dir=$(mktemp -d)
@@ -17,16 +18,17 @@ trap cleanup EXIT 2 3 9 15
 url="https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/mac"
 
 cd "$working_dir"
+echo -n > $langs_out
 for idx in `seq $lang_count`; do
     lang_data=`head -n $idx $langs | tail -n 1`
     lang=`echo $lang_data | awk -F, '{print $1}'`
     description=`echo $lang_data | awk -F, '{print $2}'`
     echo "Fetching Firefox $version - $lang - $description"
     curl -L "$url/$lang/Firefox%20$version.dmg" -o firefox.dmg
-    echo "variant $lang description {$description} {"
-    echo "    master_sites    $url/$lang"
-    echo "    checksums       rmd160  $(openssl rmd160 -r firefox.dmg | awk '{print $1}') \\"
-    echo "                    sha256  $(openssl sha256 -r firefox.dmg | awk '{print $1}') \\"
-    echo "                    size    $(ls -l firefox.dmg | awk '{print $5}')"
+    echo "variant $lang description {$description} {" >> $langs_out
+    echo "    master_sites    $url/$lang" >> $langs_out
+    echo "    checksums       rmd160  $(openssl rmd160 -r firefox.dmg | awk '{print $1}') \\" >> $langs_out
+    echo "                    sha256  $(openssl sha256 -r firefox.dmg | awk '{print $1}') \\" >> $langs_out
+    echo "                    size    $(ls -l firefox.dmg | awk '{print $5}')" >> $langs_out
     echo "}"
 done

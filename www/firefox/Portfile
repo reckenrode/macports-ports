@@ -19,7 +19,7 @@ license             MPL-2
 
 distfiles           "Firefox ${version}.dmg"
 
-source              ./Portfile.langs
+source              ${portpath}/langs.tcl
 
 depends_extract     port:undmg
 
