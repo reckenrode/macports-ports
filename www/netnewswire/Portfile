@@ -31,5 +31,5 @@ use_configure       no
 build {}
 
 destroot {
-    copy ${worksrcpath}/${subport}.app ${destroot}${applications_dir}
+    copy ${worksrcpath}/NetNewsWire.app ${destroot}${applications_dir}
 }
