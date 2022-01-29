@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                firefox
-version             96.0.1
+version             96.0.2
 
 categories          www aqua
 maintainers         largeandhighquality.com:randy
@@ -40,453 +40,453 @@ destroot {
 }
 
 variant an description {aragonés} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/an
-    checksums       rmd160  c03c3fe8bbeb4771db79724de85a431c8c06b372 \
-                    sha256  b0a2077084e37234adb2c30e0790426f133f0399a948461b005ff66b60baa3ca \
-                    size    127593694
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/an
+    checksums       rmd160  4d40f3b5cd042ae0332d03afe42bbf6a8791dd13 \
+                    sha256  a8e4b93248d2a2ce7f7f1e9bfc3da486c9333ceca4bd76004cff2493a5a816d8 \
+                    size    127627950
 }
 variant ar description {عربي} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ar
-    checksums       rmd160  13f2f73fe64081d6ba5e6e51298f77786d848821 \
-                    sha256  a408de5d32b21fc4499231a86c2c049d92672c485d90ba9d754eac4ad4d72ed1 \
-                    size    127705015
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ar
+    checksums       rmd160  a239cbb104fac0414406a262167b32ccf944b2f3 \
+                    sha256  6319bf964c05fd3b1faa576c71c602a515737712013944b781217e484fb43202 \
+                    size    127655050
 }
 variant be description {Беларуская} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/be
-    checksums       rmd160  5739a0d9e3f42f55d11653a039ccc49c3937a629 \
-                    sha256  dbe0f5e9818e7e538763c3332cafc3ef00dac8b025bbfe3964d690791256d4f9 \
-                    size    127593988
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/be
+    checksums       rmd160  aba02f519b436a51ac0643463632ddf5c61f690a \
+                    sha256  598a89e2f7a3ba92a480112dec2a11c88b7da631a5dfa31ce3b989c6dc936423 \
+                    size    127716148
 }
 variant bs description {Bosanski} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/bs
-    checksums       rmd160  2e59cf341cb580914c9ca21fb76c43b6aa303680 \
-                    sha256  d1c48a31244f0c75210645719af776b2c9af44a5030e618996cf4ce6da0bfe08 \
-                    size    127660459
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/bs
+    checksums       rmd160  a9829a507064bf60c077d3b5bfd07e09bd603394 \
+                    sha256  bc9875624228e7c91184e7ef22eadfc60ca026c628c43591f424983ab0e786a5 \
+                    size    127571866
 }
 variant ca description {Català} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ca
-    checksums       rmd160  48c330e1efbee3c844033661134a7f1b03a00c31 \
-                    sha256  0ac4f203317bc59d2febfbb026101c99e3368b29fdd8ca5bc7dfb03fa23330ac \
-                    size    128029347
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ca
+    checksums       rmd160  fef263122ee256e652560890039b5442abd9c934 \
+                    sha256  cef2720683b950d61042e59a3b210ee9ed01bc241bc416b39455b1c83632a598 \
+                    size    128024635
 }
 variant cs description {Čeština} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/cs
-    checksums       rmd160  b9d96518f5b7582c831e832fe0a9c22a69600799 \
-                    sha256  48dc297a54426aea952d7a22701307e838bc166c9736f50edb75454b6ced62db \
-                    size    127678275
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/cs
+    checksums       rmd160  10c4ff65452112c36e7835e5a45de6c7dba7ae98 \
+                    sha256  aa68a6ee047914679ecaa563e3fe7955a0f140ee67c69b5b55b520c8d8a81f8e \
+                    size    127714511
 }
 variant cy description {Cymraeg} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/cy
-    checksums       rmd160  53275b3caa04a54433b68bd958b136b8c2830375 \
-                    sha256  36b3f12204943c1dd3aef2b11b7a179f4a409f27e61e006817088df0e855232e \
-                    size    127725622
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/cy
+    checksums       rmd160  ca1419d95945479f31d922ac4c646ce261d6855d \
+                    sha256  bf82ff371fbc9e8a005062982d0369c1d01a9ad473749d4b120becec0c9ae393 \
+                    size    127636257
 }
 variant da description {Dansk} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/da
-    checksums       rmd160  49c845d23df505cf4dcf7bc00038ee0b8f610e20 \
-                    sha256  1ab81c083fe4fcdce44faff392719f503160dcfe40f99126c3a01a98b2d25c79 \
-                    size    128320105
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/da
+    checksums       rmd160  cdfce16b5820e096170d5ae148e952777d054fd1 \
+                    sha256  964038713c878599a40f6106b371f9536734b3009840aacbcc88388a4c8f1dac \
+                    size    128225797
 }
 variant de description {Deutsch} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/de
-    checksums       rmd160  19bcf783f3f4ceb8194ded648f46311c526ce15b \
-                    sha256  2833945fc439516cb3c889f52a0813cb3ca79c8c4ea278416160d6035c94f277 \
-                    size    127642111
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/de
+    checksums       rmd160  ea25d6de933fb21e333deed7567cc3968a7df1cb \
+                    sha256  7c40e2e75d5a415d247326c68b57a0154e239905ba283cbe61d80bd1d7516bfd \
+                    size    127681978
 }
 variant el description {Ελληνικά} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/el
-    checksums       rmd160  8b193348f489c7307828759edfbae22753e594f6 \
-                    sha256  a79f2d4c5f3dee7f266f6a8348f9bb7d269eeac765b0166f35aec3608b691383 \
-                    size    129316717
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/el
+    checksums       rmd160  3293c35880ead4e948e78e5ddd9bbd12f75ff448 \
+                    sha256  670a28d1df274a64854a46b6e67bff80808c1957acf36a19af42784af22e04a0 \
+                    size    129433916
 }
 variant en_CA description {English (Canadian)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/en-CA
-    checksums       rmd160  5682deed82994c26dacfab85c8665f0626670e5d \
-                    sha256  3b9e48156dacf5f9b657abedbe4080cd45d5ec9fceacae8a91c12662d6a27347 \
-                    size    127928406
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/en-CA
+    checksums       rmd160  793c8b77e37ad7b10499aadabeba623b4a70720c \
+                    sha256  a192f8ff5e5c95efb57d8b4ebf76a2eca0ee7157cce5a824eb417022891e797e \
+                    size    127841339
 }
 variant en_GB description {English (British)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/en-GB
-    checksums       rmd160  426e46924e060129c86757db2eb8d8d5526966c3 \
-                    sha256  b5c96b40a33aea6e5b00d422669cac3eff93c62c63ad0abaa456057486d96e9d \
-                    size    127689941
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/en-GB
+    checksums       rmd160  5658fc9a4d18fb82c3a04bb80bc2cbd3b7768421 \
+                    sha256  690a4af8bb382c04ae8aca036b8a4d27e9019f521df1fc2b19a38178e98f72f3 \
+                    size    127588436
 }
 variant en description {English} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/en
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/en
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant en_US description {English (USA)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/en-US
-    checksums       rmd160  2246ab2b8c2ce5724d90039ab388d9dd9af7d0ea \
-                    sha256  0c6783ed2b4f7483541c886335964358583f93a8efe9dfdf1c543290665c9013 \
-                    size    126819155
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/en-US
+    checksums       rmd160  07fc474763d8e65574ae7323934c955b5a4fff61 \
+                    sha256  fc982f7dc530d28a2820c57281f0b5d7675fb721a1a20b59209fc71d1845042d \
+                    size    126797417
 }
 variant es_AR description {Español (de Argentina)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/es-AR
-    checksums       rmd160  7e43e8fb3298a8fb7bd420529d511c35195ad997 \
-                    sha256  a3ab1b672159330448bd1bb679065abec715a64adc6c5bc8ba01f7445ad9358a \
-                    size    127730055
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/es-AR
+    checksums       rmd160  5f73d0f7af47f6185a7490d5677bc8a63fe0066d \
+                    sha256  220135ba6cf80d9c5b02a7b9d8c5b0824ad0cdb647377a25414b1291415e29ee \
+                    size    127632948
 }
 variant es_CL description {Español (de Chile)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/es-CL
-    checksums       rmd160  045673f44ff836c940df8d9149fb8bd71fc73a24 \
-                    sha256  85b64d894a6f768fc189a8d9884672f46763a8b54c47cff90be80bf70045dc5a \
-                    size    127908986
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/es-CL
+    checksums       rmd160  054f16db0e29368123c991cf402866c6f2ac8fbe \
+                    sha256  675f30a0696d8f7972a9d080d53de8769b275b73b7e7a2d6717640d6e89acdf8 \
+                    size    127924139
 }
 variant es description {Español} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/es
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/es
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant es_ES description {Español (de España)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/es-ES
-    checksums       rmd160  2b8a4626e4accaa1db7dafbb36148943050bbbc9 \
-                    sha256  75f87647ff9f2636dd35d286bb398650ec936f771f903bffc3f57d7670d48378 \
-                    size    127651664
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/es-ES
+    checksums       rmd160  97ba0b58c8d2e976ce8d775b2e0204d93dc91038 \
+                    sha256  a8c6bab425657fc84d2166a15876153fa5929192cf605869652b0b4d42dc4d5c \
+                    size    127620733
 }
 variant es_MX description {Español (de México)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/es-MX
-    checksums       rmd160  a50d65c63901c21fdaa0091141f855a780f52c31 \
-                    sha256  11190ac223faa701545bd765b29c20797a6f51782cdc5e98e83012a2be84faf0 \
-                    size    127933097
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/es-MX
+    checksums       rmd160  b58fecf4892c8b401192e04451fc73ffcbe9ffcc \
+                    sha256  dd708e53066dc80d0067e7119af5a669e5714a48f301794b746620545655f662 \
+                    size    127878906
 }
 variant et description {Eesti keel} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/et
-    checksums       rmd160  e26ee4f6b0a795d994e9f6c8afa235236681942b \
-                    sha256  ad0213af10e58dcb0a383c2b2abaa161cb2d44bcd2c96b35cb3f2c950b3f89cb \
-                    size    128489196
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/et
+    checksums       rmd160  e98f2959349cbc82191565426291fb081de06c2d \
+                    sha256  462929fc67d998df635dfb59a5c10942e8b21cfa3a85bbbc9554cba2f95590dd \
+                    size    128420059
 }
 variant eu description {Euskara} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/eu
-    checksums       rmd160  ac50acb15352c5b41271ee39b0db2012781b544e \
-                    sha256  1694586ecebd37efd16cbc44b103acef9e7f5694d25ce1485b2ce1562fe1d15b \
-                    size    127652098
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/eu
+    checksums       rmd160  31aa1be4abb90b612dd05158fcd06abb6c2c4b10 \
+                    sha256  9a653d19e54c3f7ef51a2cb352bd2c081eec202ee698360f668f38190c6918a5 \
+                    size    127662189
 }
 variant fa description {فارسی} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/fa
-    checksums       rmd160  ae35f2b7c279c11391789a1748052ce484a78bc5 \
-                    sha256  157686cc83e5cef8575323c5190596760ca80cfa34f76d11fc672da5ad202881 \
-                    size    127563266
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/fa
+    checksums       rmd160  a679dd846bc002afb85f1b001589b4744461be31 \
+                    sha256  65772f381372cfa87a145503cd5141143a9749a585910c7693bea56cf41864f6 \
+                    size    127622990
 }
 variant ff description {Pulaar-Fulfulde} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ff
-    checksums       rmd160  c89667665439d52d3865086cf1f70ee8665b123a \
-                    sha256  be7dec87d5405b500af88a59e1efd383a442a932e276475c2e7ebceaade6af07 \
-                    size    127616154
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ff
+    checksums       rmd160  4fd6da69026e7845760c295f3363be6af7044202 \
+                    sha256  e4332dde080561b8a5b9337dfc808a12cf9b464a05f92b1d031fa960c5977ef4 \
+                    size    127624867
 }
 variant fi description {suomi} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/fi
-    checksums       rmd160  a8f3a396d379d760d6af3bc1969f34bd9f1d9a3f \
-                    sha256  67d629d7a09a934df73a44f74abc126c9a4c81356ae4c75460526486c85fcccd \
-                    size    127763016
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/fi
+    checksums       rmd160  bd4a6aefc072229dfe5c39afd2c8db1d4b900c66 \
+                    sha256  24e14d59bf906a628777cfbc6429015d518c7e6bc8959ddad7cd6b5b03432037 \
+                    size    127675618
 }
 variant fr description {Français} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/fr
-    checksums       rmd160  0a42feb03adee4105bb00298586e255f816b59fb \
-                    sha256  60aaa3e745f36fe74383fd219af8f1cbf95539cc16ba755b1ee22ec05700bc08 \
-                    size    128074522
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/fr
+    checksums       rmd160  9b34f0d0c51f5642dad5fb7772b259314d222254 \
+                    sha256  a5c21c055d257ce76c472f59abe4da33f34549c537a65da957443f3eff9cd440 \
+                    size    128082443
 }
 variant fy description {Frysk} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/fy
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/fy
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant fy_NL description {Frysk} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/fy-NL
-    checksums       rmd160  787ef080bf40bfac0a5cc76e29c8d8e6f46bd888 \
-                    sha256  f61c8dc9ad6935f7ab278e106b460c9242d928754ee284840c58aa225c3d1fd3 \
-                    size    129539323
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/fy-NL
+    checksums       rmd160  b6ec4b1d3c1bb463922283f3633b8c5978556596 \
+                    sha256  37d4fac632451533d961db11a899d3d89b5fac8b25f991b69d15949832f4b7ad \
+                    size    129612812
 }
 variant gd description {Gàidhlig} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/gd
-    checksums       rmd160  e8b9da871a1782c439cf094f44e80791f2656852 \
-                    sha256  d92f71de8bfb560dda6d8fd0af2635d721a7beff4dc012db6e96332e6be98c6e \
-                    size    127647089
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/gd
+    checksums       rmd160  d6310752b03d7a1b18ad0e790939b5b414bdaff2 \
+                    sha256  ae3688b125b3749cde886b306b8333742e1ec9cfcb60bf0078cd55d68002d169 \
+                    size    127638234
 }
 variant gl description {Galego} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/gl
-    checksums       rmd160  e6ade7f0e1648a77997d3e82f35132f2832f65f2 \
-                    sha256  fa9eb1b50d275c71908e891858adb08dcf759fede7fded49df54f0d053ffb74f \
-                    size    127671373
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/gl
+    checksums       rmd160  8b5f453da9141fe0183594a731a1b27ca497e3b5 \
+                    sha256  7d96c0a89dc59f9e6bba0749de56cde66dfe4257c6dc17901456c67598d12919 \
+                    size    127702677
 }
 variant gn description {Avañe'ẽ} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/gn
-    checksums       rmd160  d3148d75d801fae2925795fc3de6f796fe174992 \
-                    sha256  6ea6a26ac66e03feb8adb2ca79e12880939c174a0f72639a8b4f14d11e765085 \
-                    size    127719263
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/gn
+    checksums       rmd160  9109c8a6cd2c7a0019ed5b6e5f9b8b674c00883c \
+                    sha256  c7d5c9173ef8a16ccf596d0f526becae4f2c98fc17e8e54c829feb7a14004910 \
+                    size    127690638
 }
 variant he description {עברית} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/he
-    checksums       rmd160  b81281292ad17308f1ad47fff2d2d9a8cc87bbc9 \
-                    sha256  4bf06ed45e5b51cebd3ed83c13cac24a41732c9ed1e4f8a233b0f70bddc0ab2e \
-                    size    127635217
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/he
+    checksums       rmd160  cc53c85d206c5861dbb146056c5dd415595e7cc7 \
+                    sha256  a596a63511550267e76ea81dd263e1cf556f32941adb308df50f209f6d7801b6 \
+                    size    127689646
 }
 variant hi description {हिन्दी} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/hi
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/hi
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant hi_IN description {हिन्दी (भारत)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/hi-IN
-    checksums       rmd160  42cee9892905f36a2f39b5afdc6035f883c31007 \
-                    sha256  ffcfe1ad25953d5793eb85a5654ae13444476cdfe4c9a7950873fa0224e23ab8 \
-                    size    127591849
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/hi-IN
+    checksums       rmd160  a7488429d5103c7bfb9bb91afcf87190be52a96c \
+                    sha256  7d594da30532cd51a2745cfcb01205caf7eaeef32ee812505f7f7bac0ec4991e \
+                    size    127640520
 }
 variant hr description {Hrvatski} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/hr
-    checksums       rmd160  b7896bc0471ae69af78e2b0e5cd0c533cfc3875d \
-                    sha256  ee19424bab2d78fe13ec0624dd863d7b5efbc2960445f116dd67ac9fe356836a \
-                    size    127729677
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/hr
+    checksums       rmd160  b8da666d362059240f02dd536801c350dd9825a6 \
+                    sha256  42786d635a755d2aa4b984ffa618ae77d3b0c7a9758daf2177441d938e70e8dd \
+                    size    127692111
 }
 variant hu description {magyar} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/hu
-    checksums       rmd160  7092ff197fbd7c85f75f672c3696e0e5973a459c \
-                    sha256  e17ca5fb8518ec6ed036c641395ed5bb71d91053a2cc3e62be724058fe40998f \
-                    size    128384356
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/hu
+    checksums       rmd160  72fd8885ae91654367d4432972d6bf11f3a17c09 \
+                    sha256  e48439c9b1c16bd6a3757f618432b18b29ee2258e3789d0b58231cc5c76c80b3 \
+                    size    128280245
 }
 variant hy description {Հայերեն} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/hy
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/hy
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant hy_AM description {Հայերեն} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/hy-AM
-    checksums       rmd160  5be0a25fa09c852a972db9f6ae5f268f1e70cfc9 \
-                    sha256  abefdf0c849b81fc48d782c65add28b1120f7e0633e448f5e28dec86452e3f90 \
-                    size    127626581
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/hy-AM
+    checksums       rmd160  4a63a1af5de8bdb1abeb7ed8012de6b8f6b98422 \
+                    sha256  3b96fe61ff96e5d884377f8e9cf273c15a633b308fd8a95e1c849cf5149f1ef4 \
+                    size    127599535
 }
 variant ia description {Interlingua} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ia
-    checksums       rmd160  565bf9974bc01d1dac909f5258ecd55ada8bcf6e \
-                    sha256  6ef150b72850694d87dae06100f2ee0c60eca85d75ab85cae829dbd3c5beec40 \
-                    size    127676975
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ia
+    checksums       rmd160  bc0e94677826375824f31ad9e5eedff286733b8e \
+                    sha256  4a9ea6592275c0b1e36f1d9ca3207efd3c9d913972edf9ff7f928370c0a37205 \
+                    size    127615573
 }
 variant id description {Bahasa Indonesia} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/id
-    checksums       rmd160  0d27f0ec0fb0b6b3346b9c7f35ccdd06b5727903 \
-                    sha256  cd1c9575ee593fd23bb1cccedfbaa52c5b08b919706171403abc861a447e7700 \
-                    size    127767092
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/id
+    checksums       rmd160  0731507f9f83b093aefd8aa86741fe312d2323d2 \
+                    sha256  c7162792ed53a10a7fc3448da30d222da516539ba6e8b0dee819d260249c832c \
+                    size    127729580
 }
 variant it description {Italiano} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/it
-    checksums       rmd160  f624386fa0b1e1c2a1bbdbbeddad63d3b96c5f42 \
-                    sha256  1708cc3d7f9cb7b3d3c22819e9505cb02f93aff4f1d63c2b4d6e5e2cc117567a \
-                    size    127643575
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/it
+    checksums       rmd160  e510cc39df91da98543896f107ec06c20c818b72 \
+                    sha256  1ee553d068668ebed4c340eace8831fa3a5f14f45ec46a16a867a5f69b089a18 \
+                    size    127598905
 }
 variant ja description {日本語} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ja
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ja
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant ka description {ქართული} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ka
-    checksums       rmd160  709dbce32a23e7701d8ad4038d4031ae7a1eb671 \
-                    sha256  a9d674f6a5a4f383f74a3bd008313a627f4c3a48d535bec4c5fe097ad4809103 \
-                    size    127671443
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ka
+    checksums       rmd160  052b0d783c28929e102b647884269ec9f3941c05 \
+                    sha256  151cc3c1988ebab7ab5805a83021feceda917de7feddb5c7df792a8a433827b7 \
+                    size    127717744
 }
 variant ko description {한국어} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ko
-    checksums       rmd160  14b85beaf6b7d49e54dd5b8fb9168fef59ce8a10 \
-                    sha256  88dfc30b87a6e27f97c2081fedac9281268cfa7cf7b61242fb7b3bf1bbc4c1d2 \
-                    size    127672814
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ko
+    checksums       rmd160  46d8d16bb5117e310fb5d3d94b7a8cdbe5ad04cc \
+                    sha256  8a93140c427a311a85dc10b588db1ef7b695f69564e1e0625f676107fb6373b4 \
+                    size    127665843
 }
 variant lt description {Lietuvių} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/lt
-    checksums       rmd160  32484d5b01a655fe09d53956907418f65cdd2da4 \
-                    sha256  bfbd06fb487bf26db8c6adc07c1089d1d751ad98add9cc306de145183611b669 \
-                    size    127952482
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/lt
+    checksums       rmd160  5cd2ed1c7681794590f233b67ab011bb285bbc9b \
+                    sha256  2a2b6d65fa56677fd943ad789f935750b7e146e43f68fe4db72dcab15d28d7c4 \
+                    size    127933699
 }
 variant mr description {मराठी} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/mr
-    checksums       rmd160  94af91da32f9f02e4a3f176b6ed2a1b6a5c058ce \
-                    sha256  e5be234fa8b322de7dc132a656baf1a9829d6079b0d267933a2aca75a4af4abc \
-                    size    127641527
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/mr
+    checksums       rmd160  82883cb031870e9b75d7cee87149587a0dad456a \
+                    sha256  63493bd002e367fe7046042782e6b7680e4a4aae893042da43f0cd1bc6a5ac2e \
+                    size    127583253
 }
 variant ms description {Melayu} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ms
-    checksums       rmd160  7fd22657401aa4c2414d83706da561d42f3f7100 \
-                    sha256  85af80f64f3ea9b548d246d63aa36787ea11888f6fbbc88c460bb02af813ffa5 \
-                    size    127485138
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ms
+    checksums       rmd160  1321823c83cf041df39110692a686228c18f60f3 \
+                    sha256  2fa8a45c85cad34c6cbd1a2bbaca05ceafc9e756f32d2448b8706bd7b95477f9 \
+                    size    127524303
 }
 variant my description {မြန်မာဘာသာ} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/my
-    checksums       rmd160  dc8504c178891f43f02acc94ff50ec5b6813a975 \
-                    sha256  b8b6b7bfcd251d3f5fc4b31f2fe6e7959c858a33465f9591abc67af8b8e1f6ce \
-                    size    127611254
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/my
+    checksums       rmd160  d9dc07849b56b63445500b9e22fc8c037709209b \
+                    sha256  6b8a42ee3abfe57143cb87f1f9df527eaf078f58645db28f1852785012ed0a64 \
+                    size    127601594
 }
 variant nb_NO description {Norsk bokmål} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/nb-NO
-    checksums       rmd160  6e1d3bba6e52ccc3eedd3e0ad817e1498225da21 \
-                    sha256  daa710c647ff46f31e87089de2903b477c5bc79d69aef4fc80c53a5e4638bcea \
-                    size    127652028
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/nb-NO
+    checksums       rmd160  47c67e29aa8c019f997eb5a3e6e02ae3ba215e57 \
+                    sha256  cb390417fe20e1f1e22dc201b92dd26040775b4d31d36cc85fd9da953304bb29 \
+                    size    127573127
 }
 variant nl description {Nederlands} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/nl
-    checksums       rmd160  af978050e04abef4a3efdd96d71ae6c2a1c625fd \
-                    sha256  2f9d6656c577ccb22df376f8b92b91933d4c55b73d02a96399df47b0de900c95 \
-                    size    128499992
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/nl
+    checksums       rmd160  29463c3e0fbc15018cce595c0128bc10d0b337f9 \
+                    sha256  cf4d7644e5fad408ba05099970aa698bda1ef3f0e9f78a1ad094cfc10b2a4536 \
+                    size    128490419
 }
 variant nn_NO description {Norsk nynorsk} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/nn-NO
-    checksums       rmd160  36d2caa9d4356cb622d04b81d3ab07c73ff17b78 \
-                    sha256  32bc8bb09de32b348088e88d9900c5d5ce735b64c4081f1a69323747d3d7d225 \
-                    size    127659112
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/nn-NO
+    checksums       rmd160  0891ceeac97d1c3fb8b84a44ba5e31bc412146c2 \
+                    sha256  28997462478dc6b19cc51e1436e7b340a2c34a94c2591a9c1773f8899fbe7fa2 \
+                    size    127698902
 }
 variant pa description {ਪੰਜਾਬੀ} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/pa
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/pa
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant pa_IN description {ਪੰਜਾਬੀ (ਭਾਰਤ)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/pa-IN
-    checksums       rmd160  8ab0cdcb502be1d786d58f8f3b9b992e26611020 \
-                    sha256  277bcdb12cc1dba47a8ed192a80d6f6e563d80c7b78390b42fea38d6e635dd3c \
-                    size    127643603
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/pa-IN
+    checksums       rmd160  8072bc6bb74730cb1c8c45edf1f33117d062ca65 \
+                    sha256  d274d56d5c09aebf55278cb405457cfbdbfca9564ca58421c92b23f496cc2c4d \
+                    size    127700230
 }
 variant pl description {Polski} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/pl
-    checksums       rmd160  99f4e1501d94be7a5d4087f73052641b30df50ac \
-                    sha256  82273c90b6e214ce78255ff070a9f1f4af971f6baa7b1b957d6108adf412dbdd \
-                    size    128856310
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/pl
+    checksums       rmd160  7592cceacac79d1307a433c1011bd4489427d60a \
+                    sha256  40afe4b4d910c61171cbc8685903d74599722840b9aa5e6299b55866cdec542b \
+                    size    128778046
 }
 variant pt_BR description {Português (do Brasil)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/pt-BR
-    checksums       rmd160  e40bc17cfa868e58aaae2c67b27856e4cebf3bf4 \
-                    sha256  5bfa1df02243dd4186ce7c2e7ce72f4324a341762c3280d6dfdcfecc0b80f6a3 \
-                    size    127845185
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/pt-BR
+    checksums       rmd160  8ac0078f5b95bf92ed34e5cc7df788127b8e09be \
+                    sha256  7fd41247f2a2c66918f6841d4023718acd1cd3d36a0efe18f3cd3382076d6df9 \
+                    size    127845130
 }
 variant pt description {Português} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/pt
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/pt
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant pt_PT description {Português (Europeu)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/pt-PT
-    checksums       rmd160  855bfa0aa1585b6b2d5b18602e30e72f4beb1a48 \
-                    sha256  29ab034658dbf710ed14de9e77cc9b422dada1e9003051dee81fd2b2a5ebd87c \
-                    size    127814451
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/pt-PT
+    checksums       rmd160  14637f39f2ec059b23ca5c476b49604a13afa283 \
+                    sha256  b1eb622896716758e655132cb0c59010d1c435beea2ad1d7a6086a19083278a7 \
+                    size    127888893
 }
 variant rm description {rumantsch} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/rm
-    checksums       rmd160  12254ad5c64f849d3d0bf59eac1a48a45008bc69 \
-                    sha256  c188032b7cbb761ec6a024ffe2b70be0ba1d316a53c8b6ada9ed6c25170b1c7f \
-                    size    127943401
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/rm
+    checksums       rmd160  9ef1808bc5b77bbe23e5e999a61a14a4a9e718c8 \
+                    sha256  61d14b96f60cdafd1dd50861b1347cbc5ba246a0993c8c6b9caf16d94db0d8b4 \
+                    size    127866046
 }
 variant ro description {Română} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ro
-    checksums       rmd160  bb0dc24956dc192284cea4fe594de43b58f33311 \
-                    sha256  8e60cc8f0cda9f9a73f3b7781b427231a1ff15852797a1af5ca77a9ef1a18a26 \
-                    size    128194844
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ro
+    checksums       rmd160  f63ebc91e253dfb81f3d41bb24f53ab6b6b60363 \
+                    sha256  d83dcc3111c5cc789fc00e1ab3d85b9cfa81ed852f63660f20f530b7f8f72240 \
+                    size    128220806
 }
 variant ru description {Русский} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ru
-    checksums       rmd160  944ead9f20ad6eb67f9f3d26a3616f80e09395c5 \
-                    sha256  c627916aaf9eb11bda648788395d79a539eecc7c6c4c1a59fe4c55a792eec7db \
-                    size    128202601
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ru
+    checksums       rmd160  41ae7a69e31b7ec9e67f82a0f3783faf2372b6fc \
+                    sha256  49554faa7d604192288c40c64a55268ef521f7268087cbe0726741b896c41839 \
+                    size    128193754
 }
 variant sk description {slovenčina} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/sk
-    checksums       rmd160  21d491b8fa139ac77354312b37d0f2f600c035f6 \
-                    sha256  665a289d8c8c36fe12e00029317cd409ad8c9c88153d585e6ed4d2a83454fe82 \
-                    size    128550953
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/sk
+    checksums       rmd160  40610703f84348163574a2ba5f301efa1ea9516d \
+                    sha256  db8bc67a5e3f5572b8f0fc143c8fbddfc4ddab71d166194f3a3299e45db4b0d1 \
+                    size    128523992
 }
 variant sl description {Slovenščina} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/sl
-    checksums       rmd160  be908c1a59e1655c00dc01858ff24ec4c15f8825 \
-                    sha256  e2a7f032341dd11985cf2f22ab5309b5b7d5c43d1bf2d901cca203d12eb6d42c \
-                    size    127704115
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/sl
+    checksums       rmd160  549fafbb87773ba17f55b01b8579c97de907c20c \
+                    sha256  ed50f15f80451dcaac67c44bae4937dba4ea2bf332147716f03a9498631cb6c4 \
+                    size    127715687
 }
 variant sq description {Shqip} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/sq
-    checksums       rmd160  05dda36bc60e25d99e01b3daaa12a867fbb35ffa \
-                    sha256  d5f93c941c0f4730cee8c1ceea660b80d8547c63b3496425d5116e665a7fdc41 \
-                    size    127665112
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/sq
+    checksums       rmd160  cfe982c5bdd56051e2c4b905c29f1e0d6dc3cb3b \
+                    sha256  3f9bae24d7991cad383c44cbf7edc189fdc22ad9a5cdfe1467e53cf7a65a66b4 \
+                    size    127686725
 }
 variant sr description {Српски} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/sr
-    checksums       rmd160  67583dff181e0a2171516a3d49bd55ad641b6651 \
-                    sha256  ab5551d2aad318e49ba0caef4f89f70683f3367ec5de9d0711f3875f6c286476 \
-                    size    129445236
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/sr
+    checksums       rmd160  1bda8930fa488252a32a210ebb4e693494967b02 \
+                    sha256  c22e2c0f5ebaea7ba1ef3ce3cf712c7305d2c5d2f3d06a1c46da8b7d5594069f \
+                    size    129403829
 }
 variant sv description {Svenska} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/sv
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/sv
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant sv_SE description {Svenska} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/sv-SE
-    checksums       rmd160  ca61249cf95bdb832710c47d595acf170e760e00 \
-                    sha256  05210ce9665a97e82b04fd76e57c1fbe1e34559c0fe6a505bbbcb6fc4fa994ac \
-                    size    128283893
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/sv-SE
+    checksums       rmd160  ca724a31aad4fed5308cfbf395ce33573c5ad7d1 \
+                    sha256  fa5e171889167a35f064c41664ac3c8c4abc10241c647406d65a7a1ef905f586 \
+                    size    128283113
 }
 variant th description {ไทย} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/th
-    checksums       rmd160  806e534c85ec967c7a0d24bc341fe89b8eb314b5 \
-                    sha256  53256b17a942e83edf72f71513ae5edb7dff1ccaa9a251470c9f15862b6bf52c \
-                    size    127692798
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/th
+    checksums       rmd160  55ca56b9759c65aa0ec0dbdb7ed2a1cdbeb71219 \
+                    sha256  55cc6ef3dccdaef23af171725b7e29f25add026814cf76f04778aee783594bd0 \
+                    size    127700970
 }
 variant tl description {Tagalog} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/tl
-    checksums       rmd160  2c7a09cad0bb37e5745bf5632172450fe1e41df4 \
-                    sha256  b22da4266456238d6048f7696258d2903c572065726fa66b5ee1097fec31cfa1 \
-                    size    127686549
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/tl
+    checksums       rmd160  7745c2df32de076f4a9028f3452aefece0e5c9df \
+                    sha256  c53d52b3d98046fd474a16d1ce11df58d45a8c27deba6183af94ed43d4b46f8f \
+                    size    127620821
 }
 variant tr description {Türkçe} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/tr
-    checksums       rmd160  4d65f8071dea21daf1e62875b5185f59485f1b1e \
-                    sha256  b3606d829912ed1d7b11ad35e96b623f28844baf746d0be6e935a5d8995f2622 \
-                    size    127677028
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/tr
+    checksums       rmd160  139c542e38d38c460bdc7e9556f5b51f6dfa550c \
+                    sha256  177d0327757e2f3fd85acbee4025181dd23c1c75d1dbe98bdb97064e26c1390d \
+                    size    127674797
 }
 variant uk description {Українська} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/uk
-    checksums       rmd160  e3f7e6ecfa5563a24d419273e4871d4a16329762 \
-                    sha256  84fa358a885cdfd828ac0c13a82c4591d32c3b4aab4f94fc7cca96a5f58e2b84 \
-                    size    128931381
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/uk
+    checksums       rmd160  f6287c846f528638978e14bf7e579aadcc2cb30a \
+                    sha256  791dfb602b7bdc6d642a05d9db2bb5a23696d5c538febab5e0f990ace19dbcae \
+                    size    128947481
 }
 variant ur description {اُردو} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/ur
-    checksums       rmd160  f03b3df674990dc6110749d08046039d50baaf09 \
-                    sha256  d299dca7faaf47c732b9b40434d8261b47b8173ec882cd3c52b5d0d2aabc6acf \
-                    size    127661832
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/ur
+    checksums       rmd160  8c8c19a28cb0c61e87a3f1bd20f350b47b8d3a11 \
+                    sha256  491cc9838c9a812abe45d0974fa49f062652cdd9a42cfc118a6a3a28f2e518df \
+                    size    127674635
 }
 variant uz description {Oʻzbek tili} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/uz
-    checksums       rmd160  c33278d58c19039ff201c6936f08bc86059d896a \
-                    sha256  ac5ffc3dededb10d49a8c536a131b05d0e566bf28485d1c544203451587658cb \
-                    size    127632587
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/uz
+    checksums       rmd160  fa512cdc8240194dcd6e05ae0b9067077d0e39ee \
+                    sha256  0e817ce7b6fc0337ef885b9551f6e71efb6171c148e0fef2f5f993ec697ac6ce \
+                    size    127611537
 }
 variant vi description {Tiếng Việt} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/vi
-    checksums       rmd160  56343c33d59b558497bceb9e58931369972b9edf \
-                    sha256  ad5ce1500e776884c354e5037e4f5f77ce463deb26354178d777d0fcfcd1ffc7 \
-                    size    127715430
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/vi
+    checksums       rmd160  62b3aaf6470b7f0d053278b184d86060dfd5db55 \
+                    sha256  0c39e02cc6a8001092ac43ef06391db3f9b0e91248ec9699f09aee77452c203f \
+                    size    127698040
 }
 variant zh description {中文} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/zh
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/zh
     checksums       rmd160  ae1bde21ecf1e7e528e7a513e3f1b0a9df5d0cac \
                     sha256  ff75302b2d938162f986b31e6fac419ebfafda7835eaf7ca4ca1e4e7290ef5c8 \
                     size    309
 }
 variant zh_CN description {中文 (简体)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/zh-CN
-    checksums       rmd160  07e3bd205338a69c1b54f51406e6fe92ed521cd0 \
-                    sha256  ce81989e0b0920eda1abefa72a9c27848e2c106fc2ab5cf3d5f6ab25727828b8 \
-                    size    127648278
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/zh-CN
+    checksums       rmd160  1a77894d58653c9173366cdc38a8d9750d103161 \
+                    sha256  5a92f53c6b5b75db03e97dd78ad440c638864e823fb303e5b87db2f610af2a62 \
+                    size    127608741
 }
 variant zh_TW description {正體中文 (繁體)} {
-    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.1/mac/zh-TW
-    checksums       rmd160  fdfdecebf274775b2f43f9c5199ae25910bf253c \
-                    sha256  70c16a4db875de87dbd65ce4db06a17599b8bb1216ae9521a2aafde3ef852495 \
-                    size    127901597
+    master_sites    https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/mac/zh-TW
+    checksums       rmd160  cafdce5aae51c87e3b2ec81b203b6203b0974256 \
+                    sha256  e4db10f02f24e7333d6798fa01ceb0c1713a8ca57def4b4f684d2253a8fb8566 \
+                    size    127845234
 }
 default_variants +en_US
