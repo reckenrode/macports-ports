@@ -25,7 +25,7 @@ for idx in `seq $lang_count`; do
     description=`echo $lang_data | awk -F, '{print $2}'`
     echo "Fetching Firefox $version - $lang - $description"
     curl -L "$url/$lang/Firefox%20$version.dmg" -o firefox.dmg
-    echo "variant $($lang | sed s/-/_/) description {$description} {" >> $langs_out
+    echo "variant $(echo $lang | sed s/-/_/) description {$description} {" >> $langs_out
     echo "    master_sites    $url/$lang" >> $langs_out
     echo "    checksums       rmd160  $(openssl rmd160 -r firefox.dmg | awk '{print $1}') \\" >> $langs_out
     echo "                    sha256  $(openssl sha256 -r firefox.dmg | awk '{print $1}') \\" >> $langs_out
