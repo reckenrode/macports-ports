@@ -31,7 +31,8 @@ checksums           crossover-21.1.0.zip \
                     size    355858112
 
 depends_build       port:dxvk
-depends_lib         port:ncurses
+depends_lib         port:ncurses \
+                    port:MoltenVK
 
 use_configure       no
 
@@ -41,12 +42,19 @@ extract {
 }
 
 build {
-    set crossover = ${worksrcpath}/CrossOver.app/Contents/SharedSupport/CrossOver/$lib/wine/dxvk
+    set crossover ${worksrcpath}/CrossOver.app/Contents
+    
     file delete -force "${crossover}/Resources/CrossOver CD Helper.app"
+    
+    file delete {*}[glob ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk/*]
+    file delete {*}[glob ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk/*]
     foreach dll [list d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll] {
         copy ${prefix}/share/dxvk/x32/${dll} ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk
         copy ${prefix}/share/dxvk/x64/${dll} ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk
     }
+    
+    file delete ${crossover}/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
+    ln -s ${prefix}/lib/libMoltenVK.dylib ${crossover}/SharedSupport/CrossOver/lib64/
 }
 
 destroot {
