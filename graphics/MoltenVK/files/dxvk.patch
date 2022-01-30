@@ -1,0 +1,34 @@
+diff --git a/MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm b/MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm
+index e9376a3b..394115eb 100644
+--- MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm
++++ MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm
+@@ -1656,6 +1656,8 @@
+     _features.robustBufferAccess = true;  // XXX Required by Vulkan spec
+     _features.fullDrawIndexUint32 = true;
+     _features.independentBlend = true;
++    _features.geometryShader = true;  // XXX Required by DXVK for D3D10
++    _features.tessellationShader = true;  // XXX Required by DXVK for D3D11
+     _features.sampleRateShading = true;
+     _features.depthBiasClamp = true;
+     _features.fillModeNonSolid = true;
+@@ -1669,6 +1671,7 @@
+     _features.shaderUniformBufferArrayDynamicIndexing = true;
+     _features.shaderStorageBufferArrayDynamicIndexing = true;
+     _features.shaderClipDistance = true;
++    _features.shaderCullDistance = true;  // XXX Required by DXVK for 10level9
+     _features.shaderInt16 = true;
+     _features.multiDrawIndirect = true;
+     _features.inheritedQueries = true;
+diff --git a/MoltenVK/MoltenVK/Utility/MVKEnvironment.h b/MoltenVK/MoltenVK/Utility/MVKEnvironment.h
+index e7d65446..67f74d2d 100644
+--- MoltenVK/MoltenVK/Utility/MVKEnvironment.h
++++ MoltenVK/MoltenVK/Utility/MVKEnvironment.h
+@@ -275,7 +275,7 @@ void mvkSetConfig(const MVKConfiguration& mvkConfig);
+ 
+ /** Resume MVKDevice VK_ERROR_DEVICE_LOST errors that do not cause MVKPhysicalDevice errors. Disabled by default. */
+ #ifndef MVK_CONFIG_RESUME_LOST_DEVICE
+-#   define MVK_CONFIG_RESUME_LOST_DEVICE    0
++#   define MVK_CONFIG_RESUME_LOST_DEVICE    1
+ #endif
+ 
+ /** Support Metal argument buffers. Disabled by default. */
