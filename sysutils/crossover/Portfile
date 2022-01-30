@@ -30,6 +30,7 @@ checksums           crossover-21.1.0.zip \
                     sha256  3c130e2eb0fd3d552484f072dc20e665048698e7dffb06c4f3890013eff5749c \
                     size    355858112
 
+depends_build       port:dxvk
 depends_lib         port:ncurses
 
 use_configure       no
@@ -40,7 +41,12 @@ extract {
 }
 
 build {
-    file delete -force "${worksrcpath}/CrossOver.app/Contents/Resources/CrossOver CD Helper.app"
+    set crossover = ${worksrcpath}/CrossOver.app/Contents/SharedSupport/CrossOver/$lib/wine/dxvk
+    file delete -force "${crossover}/Resources/CrossOver CD Helper.app"
+    foreach dll [list d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll] {
+        copy ${prefix}/share/dxvk/x32/${dll} ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk
+        copy ${prefix}/share/dxvk/x64/${dll} ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk
+    }
 }
 
 destroot {
