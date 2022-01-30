@@ -30,9 +30,9 @@ checksums           crossover-21.1.0.zip \
                     sha256  3c130e2eb0fd3d552484f072dc20e665048698e7dffb06c4f3890013eff5749c \
                     size    355858112
 
-depends_build       port:dxvk
 depends_lib         port:ncurses \
-                    port:MoltenVK
+                    port:MoltenVK \
+                    port:dxvk
 
 use_configure       no
 
@@ -49,8 +49,8 @@ build {
     file delete {*}[glob ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk/*]
     file delete {*}[glob ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk/*]
     foreach dll [list d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll] {
-        copy ${prefix}/share/dxvk/x32/${dll} ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk
-        copy ${prefix}/share/dxvk/x64/${dll} ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk
+        ln -s ${prefix}/share/dxvk/x32/${dll} ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk
+        ln -s ${prefix}/share/dxvk/x64/${dll} ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk
     }
     
     file delete ${crossover}/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
