@@ -1,0 +1,51 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                ffxiv
+version             1.0.5
+
+categories          games
+maintainers         largeandhighquality.com:randy
+
+description         Become the Warrior of Light, and fight to deliver the realm from destruction.
+long_description    ${description}
+
+platforms           macosx
+supported_archs     x86_64
+license             Restrictive
+
+homepage            https://www.finalfantasyxiv.com
+
+master_sites        https://mac-dl.ffxiv.com/cw/
+
+distname            finalfantasyxiv-${version}
+
+checksums           rmd160  7a31eb809c8276611e54d8400b2a4fa45416b8ab \
+                    sha256  059103611b81bbd1b03a6220ce7a1a8d0e74b8603f63f19a5f8c72d6ca26cd91 \
+                    size    1736085582
+
+depends_build       port:dxvk
+
+use_zip             yes
+extract.mkdir       yes
+
+use_configure       no
+
+build {
+    set ffxivpath \
+        "${worksrcpath}/FINAL\ FANTASY\ XIV\ ONLINE.app/Contents/SharedSupport/finalfantasyxiv/"
+#    xinstall -m 644 ${prefix}/lib/libMoltenVK.dylib ${ffxivpath}/lib64
+    xinstall -m 644 -W ${prefix}/share/dxvk/x64/ \
+        d3d10.dll \
+        d3d10_1.dll \
+        d3d10core.dll \
+        d3d11.dll \
+        d3d9.dll \
+        dxgi.dll \
+        ${ffxivpath}/support/published_Final_Fantasy/drive_c/windows/system32/
+}
+
+destroot {
+    copy "${worksrcpath}/FINAL FANTASY XIV ONLINE.app" ${destroot}${applications_dir}
+}

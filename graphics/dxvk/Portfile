@@ -1,0 +1,79 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        doitsujin dxvk 1.9.4 v
+
+categories          graphics
+maintainers         largeandhighquality.com:randy
+
+description         Vulkan-based implementation of D3D9, D3D10, and D3D11 for Wine
+long_description    ${description}
+
+platforms           macosx
+supported_archs     x86_64
+license             Apache-2.0
+
+distname            ${github.tag_prefix}${github.version}
+checksums           rmd160  bfc8c28b0d8abce63500830190977fbd8337c00d \
+                    sha256  3c809a47ece756d137b91d9a6f472ba7ede102badcbf0ee252eb9e2d93fe2df0 \
+                    size    1168797
+
+patchfiles          moltenvk.patch
+
+use_configure       no
+
+depends_build       port:mingw-w64 \
+                    port:glslang \
+                    port:meson
+
+build.cmd           meson
+build.pre_args      setup
+build.post_args     --buildtype release --prefix ${destroot}${prefix}/share/dxvk build
+
+destroot {
+    set docdir ${destroot}${prefix}/share/doc/${subport}/
+    xinstall -d -m 755 ${docdir}
+    xinstall -m 644 -W ${worksrcpath} \
+        README.md \
+        LICENSE \
+        ${docdir}
+}
+
+if {${subport} eq ${name}} {
+    depends_run     port:dxvk-w32 \
+                    port:dxvk-w64
+
+    build {}
+}
+
+subport dxvk-w32 {
+    build.args      --cross-file build-win32.txt --bindir x32 --libdir x32
+    post-build {
+        system "cd ${worksrcpath}/build && ninja"
+    }
+    pre-destroot {
+        system "cd ${worksrcpath}/build && ninja install"
+    }
+}
+
+subport dxvk-w64 {
+    build.args      --cross-file build-win64.txt --bindir x64 --libdir x64
+    post-build {
+        system "cd ${worksrcpath}/build && ninja"
+    }
+    pre-destroot {
+        system "cd ${worksrcpath}/build && ninja install"
+    }
+}
+
+# Source: https://github.com/Sporif/dxvk-async
+variant async description {Apply DXVK async patches} {
+    patchfiles-append   dxvk-async.patch
+    notes           "
+Set the environment variable `DXVK_ASYNC=1` or use `dxvk.enableAsync = true` in dxvk.conf to enable.
+"
+}
+
+default_variants +async

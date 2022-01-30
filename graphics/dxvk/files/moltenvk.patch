@@ -1,0 +1,14 @@
+diff -ru a/dxvk-1.9.4/src/d3d11/d3d11_device.cpp b/dxvk-1.9.4/src/d3d11/d3d11_device.cpp
+--- src/d3d11/d3d11_device.cpp	2022-01-24 09:08:49.000000000 -0500
++++ src/d3d11/d3d11_device.cpp	2022-01-29 22:57:37.000000000 -0500
+@@ -1973,8 +1973,8 @@
+       enabled.core.features.logicOp                               = supported.core.features.logicOp;
+       enabled.core.features.shaderImageGatherExtended             = VK_TRUE;
+       enabled.core.features.variableMultisampleRate               = supported.core.features.variableMultisampleRate;
+-      enabled.extTransformFeedback.transformFeedback              = VK_TRUE;
+-      enabled.extTransformFeedback.geometryStreams                = VK_TRUE;
++      enabled.extTransformFeedback.transformFeedback              = supported.extTransformFeedback.transformFeedback;
++      enabled.extTransformFeedback.geometryStreams                = supported.extTransformFeedback.geometryStreams;
+     }
+     
+     if (featureLevel >= D3D_FEATURE_LEVEL_10_1) {
