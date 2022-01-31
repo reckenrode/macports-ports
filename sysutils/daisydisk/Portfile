@@ -4,6 +4,7 @@ PortSystem          1.0
 
 name                daisydisk
 version             4.21.4
+revision            1
 
 categories          sysutils aqua
 maintainers         largeandhighquality.com:randy
@@ -19,14 +20,15 @@ license             Restrictive
 
 homepage            https://daisydiskapp.com
 
-distname            DaisyDisk
-master_sites        https://daisydiskapp.com/downloads/
-use_zip             yes
-extract.mkdir       yes
+master_sites        https://web.archive.org/web/20220125065525/https://daisydiskapp.com/downloads/
 
+distname            DaisyDisk
 checksums           rmd160  320a21b896d1139549133bab0ab10b24d5dea551 \
                     sha256  48a2637a66464d216af85583e1c715ed4511299e08bfb497855d3d740fd4c09d \
                     size    8901486
+
+use_zip             yes
+extract.mkdir       yes
 
 use_configure       no
 
