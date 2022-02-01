@@ -1,0 +1,154 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           xcode 1.0
+PortGroup           xcodeversion 1.0
+
+github.setup        KhronosGroup MoltenVK 9366457b86831a6b67d44caf45440043e635eef4
+
+name                MoltenVK-devel
+conflicts           MoltenVK
+
+set submodules {
+                    USCiLab cereal 51cbda5f30e56c801c07fe3d3aba5d7fb9e6cca4 cereal
+                    KhronosGroup Vulkan-Headers 8c1c27d5a9b9de8a17f500053bd08c7ca6bba19c Vulkan-Headers
+                    KhronosGroup SPIRV-Cross 53d94a982e1d654515b44db5391de37f85489204 SPIRV-Cross
+                    KhronosGroup glslang c9706bdda0ac22b9856f1aa8261e5b9e15cd20c5 glslang
+                    KhronosGroup SPIRV-Tools 21e3f681e2004590c7865bc8c0195a4ab8e66c88 glslang/External/spirv-tools
+                    KhronosGroup SPIRV-Headers 814e728b30ddd0f4509233099a3ad96fd4318c07 glslang/External/spirv-tools/external/spirv-headers
+                    KhronosGroup Vulkan-Tools 691252756218fcbd1f0f8d7cc14e753123f08940 Vulkan-Tools
+}
+checksums           MoltenVK-9366457b86831a6b67d44caf45440043e635eef4.tar.gz \
+                    rmd160  5fdeccd532111259ee0f2ed8cd5aa23de7d93f4a \
+                    sha256  f27ce42e3bea398b2627ba7268a148c19916402f9fd00ad600e1d63b1773bf2b \
+                    size    1020676 \
+                    cereal-51cbda5f30e56c801c07fe3d3aba5d7fb9e6cca4.tar.gz \
+                    rmd160  33a8f9bd682f36387d3d589410113c6dd1e18bc4 \
+                    sha256  26361b539fe50eee308b564faa2742166d2922a7ab0bd4870ac55708581228c8 \
+                    size    336138 \
+                    Vulkan-Headers-8c1c27d5a9b9de8a17f500053bd08c7ca6bba19c.tar.gz \
+                    rmd160  bd4578164e11c85942c43e8ecbc01c8418af4294 \
+                    sha256  e86b89a1d601a3efd26fccb2f907a8dca026e3bedf08ece6b6da85cc949b0853 \
+                    size    1288450 \
+                    SPIRV-Cross-53d94a982e1d654515b44db5391de37f85489204.tar.gz \
+                    rmd160  52744a97aaab3262bdbab333cee58ae3636447c8 \
+                    sha256  ce585a0f6fe14245bb799f67d66624e8122a520dc479a6da39778d94f36304b6 \
+                    size    1561690 \
+                    glslang-c9706bdda0ac22b9856f1aa8261e5b9e15cd20c5.tar.gz \
+                    rmd160  d70b40641711affda2d032eb0b951a9e027b9867 \
+                    sha256  9ed562b906c3480b29730e46eb1536af2c82ae6a59d4d2ac93b7e764a2896372 \
+                    size    3433325 \
+                    SPIRV-Tools-21e3f681e2004590c7865bc8c0195a4ab8e66c88.tar.gz \
+                    rmd160  502ac6a6b17205b594d66c93c4f7cfe86f862c4f \
+                    sha256  1253ada1d3af912d43f7a9acff86c74afbdb6bdf1acd92bd61e0010c103bc050 \
+                    size    2892733 \
+                    SPIRV-Headers-814e728b30ddd0f4509233099a3ad96fd4318c07.tar.gz \
+                    rmd160  c3e2cc35480e6992a28584c312992ddfc8647509 \
+                    sha256  c262d3c0c36ad5c87fbe3572aa292d2aed4dcd9b1ca4868eff9ec180e3f994f2 \
+                    size    416538 \
+                    Vulkan-Tools-691252756218fcbd1f0f8d7cc14e753123f08940.tar.gz \
+                    rmd160  838fc43797f801b77b9d2383c100dd0d2857a579 \
+                    sha256  dba2b1025398562447967a08ed8ce90fa1597ca3e12cfaeb0a4898dee0288af0 \
+                    size    847867
+
+categories          graphics
+maintainers         {ryandesign @ryandesign} openmaintainer
+license             Apache-2
+
+# MoltenVK would build for i386, but it uses Metal which only works on x86_64.
+supported_archs     x86_64 arm64
+
+description         an implementation of Vulkan for Metal
+
+long_description    ${name} is an implementation of the high-performance, \
+                    industry-standard Vulkan graphics and compute API, that \
+                    runs on Apple's Metal graphics framework.
+
+master_sites        ${master_sites}:${name}
+distfiles           ${distfiles}:${name}
+
+patchfiles          buildDependencies.patch
+
+foreach {sub_author sub_project sub_commit sub_dest} ${submodules} {
+    master_sites-append https://github.com/${sub_author}/${sub_project}/archive/${sub_commit}.tar.gz?dummy=:${sub_project}
+    distfiles-append    ${sub_project}-${sub_commit}.tar.gz:${sub_project}
+}
+
+post-extract {
+    ln -s {*}[glob -directory ${workpath} -tails ${github.author}-${github.project}-*] ${worksrcpath}
+    set bad_submodule no
+    foreach {sub_author sub_project sub_commit sub_dest} ${submodules} {
+        set commit_file ${worksrcpath}/ExternalRevisions/${sub_project}_repo_revision
+        if {[file exists ${commit_file}]} {
+            set commit_re {^(\S+)}
+        } else {
+            set commit_file ${worksrcpath}/External/glslang/known_good.json
+            set commit_re "\"subrepo\" : \"${sub_author}/${sub_project}\".*?\"commit\" : \"(\[^\"\]+)\""
+        }
+        set fp [open ${commit_file} r]
+        set commit_file_data [read ${fp}]
+        close ${fp}
+        regexp ${commit_re} ${commit_file_data} -> commit
+        if {${commit} ne ${sub_commit}} {
+            set bad_submodule yes
+            set submodules [string map "${sub_commit} ${commit}" ${submodules}]
+        }
+        file mkdir [file dirname ${worksrcpath}/External/${sub_dest}]
+        ln -s {*}[glob ${workpath}/${sub_project}-*] ${worksrcpath}/External/${sub_dest}
+    }
+    if {${bad_submodule}} {
+        ui_error "The submodules should be:\n${submodules}"
+        return -code error "incorrect submodule commit"
+    }
+}
+
+depends_build-append \
+                    path:bin/cmake:cmake
+
+patch.pre_args      -p1
+
+build.pre_args      -derivedDataPath ./DerivedData
+
+compiler.cxx_standard 2011
+
+xcode.configuration Release
+xcode.project       MoltenVKPackaging.xcodeproj
+xcode.scheme        "MoltenVK Package (macOS only)"
+
+pre-build {
+    system -W ${worksrcpath} "./fetchDependencies --macos"
+}
+
+destroot {
+    set output_dir ${worksrcpath}/build/${xcode.configuration}
+    copy ${output_dir}/MoltenVKShaderConverter ${destroot}${prefix}/bin
+    copy ${output_dir}/dynamic/libMoltenVK.dylib ${destroot}${prefix}/lib
+    copy ${worksrcpath}/Package/Latest/MoltenVK/MoltenVK.xcframework ${destroot}${frameworks_dir}
+}
+
+minimum_xcodeversions   {16 9}
+
+platform darwin {
+    if {${os.major} < 16} {
+        archive_sites
+        distfiles
+        depends_build
+        known_fail  yes
+        pre-fetch {
+            ui_error "${subport} @${version} requires macOS Sierra or later"
+            return -code error "incompatible OS X version"
+        }
+    }
+}
+
+variant dxvk description {Apply patches to improve compatability with DXVK} {
+    patchfiles-append \
+                    dxvk.patch
+}
+
+variant universal {
+    build.post_args-append     -arch x86_64 -arch arm64
+}
+
+default_variants +dxvk
