@@ -1,7 +1,26 @@
+From 12c76a4a8d3a1a9545b4f7e4217b073804778188 Mon Sep 17 00:00:00 2001
+From: Gcenx <38226388+Gcenx@users.noreply.github.com>
+Date: Fri, 3 Dec 2021 08:59:11 -0500
+Subject: [PATCH] DXVK Required Changes
+
+Fake extensions for DXVK;
+- _features.geometryShader
+- _features.tessellationShader
+- _features.shaderCullDistance
+
+Enabled defaults;
+- MVK_ALLOW_METAL_FENCES=1
+- MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE=1
+- MVK_CONFIG_RESUME_LOST_DEVICE=1
+---
+ MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm  | 3 +++
+ MoltenVK/MoltenVK/Utility/MVKEnvironment.h | 6 +++---
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
 diff --git a/MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm b/MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm
 index e9376a3b..394115eb 100644
---- MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm
-+++ MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm
+--- a/MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm
++++ b/MoltenVK/MoltenVK/GPUObjects/MVKDevice.mm
 @@ -1656,6 +1656,8 @@
      _features.robustBufferAccess = true;  // XXX Required by Vulkan spec
      _features.fullDrawIndexUint32 = true;
@@ -21,8 +40,26 @@ index e9376a3b..394115eb 100644
      _features.inheritedQueries = true;
 diff --git a/MoltenVK/MoltenVK/Utility/MVKEnvironment.h b/MoltenVK/MoltenVK/Utility/MVKEnvironment.h
 index e7d65446..67f74d2d 100644
---- MoltenVK/MoltenVK/Utility/MVKEnvironment.h
-+++ MoltenVK/MoltenVK/Utility/MVKEnvironment.h
+--- a/MoltenVK/MoltenVK/Utility/MVKEnvironment.h
++++ b/MoltenVK/MoltenVK/Utility/MVKEnvironment.h
+@@ -170,7 +170,7 @@ void mvkSetConfig(const MVKConfiguration& mvkConfig);
+ 
+ /** Support full ImageView swizzles. Disabled by default. */
+ #ifndef MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE
+-#   define MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE    0
++#   define MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE    1 // XXX Required by DXVK for Intel GPUs
+ #endif
+ 
+ /** Set the fastMathEnabled Metal Compiler option. Enabled by default. */
+@@ -240,7 +240,7 @@ void mvkSetConfig(const MVKConfiguration& mvkConfig);
+ #   define MVK_ALLOW_METAL_EVENTS    1
+ #endif
+ #ifndef MVK_ALLOW_METAL_FENCES
+-#   define MVK_ALLOW_METAL_FENCES    0
++#   define MVK_ALLOW_METAL_FENCES    1 // XXX Required by DXVK for Apple/NVidia GPUs (better FPS than CPU Emulation)
+ #endif
+ 
+ /** Substitute Metal 2D textures for Vulkan 1D images. Enabled by default. */
 @@ -275,7 +275,7 @@ void mvkSetConfig(const MVKConfiguration& mvkConfig);
  
  /** Resume MVKDevice VK_ERROR_DEVICE_LOST errors that do not cause MVKPhysicalDevice errors. Disabled by default. */

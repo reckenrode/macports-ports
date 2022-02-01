@@ -6,6 +6,8 @@ PortGroup           xcode 1.0
 PortGroup           xcodeversion 1.0
 
 github.setup        KhronosGroup MoltenVK 1.1.6 v
+revision            1
+
 set submodules {
                     USCiLab cereal 51cbda5f30e56c801c07fe3d3aba5d7fb9e6cca4 cereal
                     KhronosGroup Vulkan-Headers 8c1c27d5a9b9de8a17f500053bd08c7ca6bba19c Vulkan-Headers
@@ -101,6 +103,8 @@ post-extract {
 
 depends_build-append \
                     path:bin/cmake:cmake
+
+patch.pre_args      -p1
 
 build.pre_args      -derivedDataPath ./DerivedData
 
