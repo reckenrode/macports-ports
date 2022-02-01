@@ -4,6 +4,7 @@ PortSystem          1.0
 
 name                crossover
 version             21.1.0
+revision            1
 
 categories          sysutils aqua
 maintainers         largeandhighquality.com:randy
@@ -31,7 +32,7 @@ checksums           crossover-21.1.0.zip \
                     size    355858112
 
 depends_lib         port:ncurses \
-                    port:MoltenVK \
+                    lib:libMoltenVK:MoltenVK \
                     port:dxvk
 
 use_configure       no
