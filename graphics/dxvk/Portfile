@@ -13,7 +13,7 @@ long_description    ${description}
 
 platforms           macosx
 supported_archs     x86_64
-license             Apache-2.0
+license             zlib
 
 distname            ${github.tag_prefix}${github.version}
 checksums           rmd160  bfc8c28b0d8abce63500830190977fbd8337c00d \
