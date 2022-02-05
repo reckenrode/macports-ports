@@ -4,7 +4,7 @@ PortSystem          1.0
 
 name                crossover
 version             21.1.0
-revision            1
+revision            2
 
 categories          sysutils aqua
 maintainers         largeandhighquality.com:randy
@@ -44,16 +44,18 @@ extract {
 
 build {
     set crossover ${worksrcpath}/CrossOver.app/Contents
-    
+
     file delete -force "${crossover}/Resources/CrossOver CD Helper.app"
-    
+
     file delete {*}[glob ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk/*]
     file delete {*}[glob ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk/*]
     foreach dll [list d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll] {
-        ln -s ${prefix}/share/dxvk/x32/${dll} ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk
-        ln -s ${prefix}/share/dxvk/x64/${dll} ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk
+        ln -s ${prefix}/i686-w64-mingw32/bin/${dll} \
+            ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk
+        ln -s ${prefix}/x86_64-w64-mingw32/bin/${dll} \
+            ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk
     }
-    
+
     file delete ${crossover}/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
     ln -s ${prefix}/lib/libMoltenVK.dylib ${crossover}/SharedSupport/CrossOver/lib64/
 }
@@ -83,7 +85,7 @@ variant bigsur_icon description {Replace the icon with one that fits in better w
                       rmd160  f9facadd3dba38f6283657ebee5f06fc40102f8e \
                       sha256  7bfb45b9dbcc3b48a04df83037cd6403089c2e21a5894742144aabfc09636677 \
                       size    576021
-    
+
     post-destroot {
         set icon_path ${destroot}${applications_dir}/CrossOver.app/Contents/Resources/CrossOver.icns
         delete ${icon_path}
