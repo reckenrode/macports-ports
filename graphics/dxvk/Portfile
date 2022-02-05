@@ -4,6 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        doitsujin dxvk 1.9.4 v
+revision            1
 
 categories          graphics
 maintainers         largeandhighquality.com:randy
@@ -15,24 +16,50 @@ platforms           macosx
 supported_archs     x86_64
 license             zlib
 
-distname            ${github.tag_prefix}${github.version}
-checksums           rmd160  bfc8c28b0d8abce63500830190977fbd8337c00d \
-                    sha256  3c809a47ece756d137b91d9a6f472ba7ede102badcbf0ee252eb9e2d93fe2df0 \
-                    size    1168797
+distfiles           ${github.tag_prefix}${github.version}.tar.xz \
+                    dxvk-async.patch
+
+master_sites-append \
+                    https://raw.githubusercontent.com/Sporif/dxvk-async/24daafd8e40d5ecde6901ebea2bf2098b4bd9b4e/
+
+checksums           dxvk-async.patch \
+                    rmd160  ca36543cb08456a01e692a6f59122c24934c75f8 \
+                    sha256  ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463 \
+                    size    16104 \
+                    [lindex ${distfiles} 0] \
+                    rmd160  bfc8c28b0d8abce63500830190977fbd8337c00d \
+                    sha256  3c809a47ece756d137b91d9a6f472ba7ede102badcbf0ee252eb9e2d93fe2df0
 
 patchfiles          moltenvk.patch
-
-use_configure       no
 
 depends_build       port:mingw-w64 \
                     port:glslang \
                     port:meson
 
-build.cmd           meson
-build.pre_args      setup
-build.post_args     --buildtype release --prefix ${destroot}${prefix}/share/dxvk build
+extract.only        [lindex ${distfiles} 0]
+
+patch.pre_args      -p1
+
+configure {
+    array set prefixes {32 i686-w64-mingw32 64 x86_64-w64-mingw32}
+    foreach arch [list 32 64] {
+        system -W ${worksrcpath} "meson setup --buildtype release \
+            --cross-file build-win${arch}.txt --bindir bin --libdir lib \
+            --prefix ${destroot}${prefix}/$prefixes(${arch}) build.x${arch}"
+    }
+}
+
+build {
+    system "ninja -C ${worksrcpath}/build.x32"
+    system "ninja -C ${worksrcpath}/build.x64"
+}
+
+destroot.violate_mtree  yes
 
 destroot {
+    system "ninja install -C ${worksrcpath}/build.x32"
+    system "ninja install -C ${worksrcpath}/build.x64"
+
     set docdir ${destroot}${prefix}/share/doc/${subport}/
     xinstall -d -m 755 ${docdir}
     xinstall -m 644 -W ${worksrcpath} \
@@ -41,36 +68,9 @@ destroot {
         ${docdir}
 }
 
-if {${subport} eq ${name}} {
-    depends_run     port:dxvk-w32 \
-                    port:dxvk-w64
-
-    build {}
-}
-
-subport dxvk-w32 {
-    build.args      --cross-file build-win32.txt --bindir x32 --libdir x32
-    post-build {
-        system "cd ${worksrcpath}/build && ninja"
-    }
-    pre-destroot {
-        system "cd ${worksrcpath}/build && ninja install"
-    }
-}
-
-subport dxvk-w64 {
-    build.args      --cross-file build-win64.txt --bindir x64 --libdir x64
-    post-build {
-        system "cd ${worksrcpath}/build && ninja"
-    }
-    pre-destroot {
-        system "cd ${worksrcpath}/build && ninja install"
-    }
-}
-
-# Source: https://github.com/Sporif/dxvk-async
 variant async description {Apply DXVK async patches} {
-    patchfiles-append   dxvk-async.patch
+    patchfiles-append \
+                    dxvk-async.patch
     notes           "
 Set the environment variable `DXVK_ASYNC=1` or use `dxvk.enableAsync = true` in dxvk.conf to enable.
 "
