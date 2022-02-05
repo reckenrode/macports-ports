@@ -4,7 +4,7 @@ PortSystem          1.0
 
 name                crossover
 version             21.1.0
-revision            2
+revision            3
 
 categories          sysutils aqua
 maintainers         largeandhighquality.com:randy
@@ -32,8 +32,7 @@ checksums           crossover-21.1.0.zip \
                     size    355858112
 
 depends_lib         port:ncurses \
-                    lib:libMoltenVK:MoltenVK \
-                    port:dxvk
+                    lib:libMoltenVK:MoltenVK
 
 use_configure       no
 
@@ -46,15 +45,6 @@ build {
     set crossover ${worksrcpath}/CrossOver.app/Contents
 
     file delete -force "${crossover}/Resources/CrossOver CD Helper.app"
-
-    file delete {*}[glob ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk/*]
-    file delete {*}[glob ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk/*]
-    foreach dll [list d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll] {
-        ln -s ${prefix}/i686-w64-mingw32/bin/${dll} \
-            ${crossover}/SharedSupport/CrossOver/lib/wine/dxvk
-        ln -s ${prefix}/x86_64-w64-mingw32/bin/${dll} \
-            ${crossover}/SharedSupport/CrossOver/lib64/wine/dxvk
-    }
 
     file delete ${crossover}/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
     ln -s ${prefix}/lib/libMoltenVK.dylib ${crossover}/SharedSupport/CrossOver/lib64/
@@ -76,6 +66,13 @@ destroot {
         -change /opt/cxoffice/lib64/libvkd3d.1.dylib @rpath/libvkd3d.1.dylib \
         ${destroot}${applications_dir}/${d3d12_dll}"
     system "codesign -f -s - ${destroot}${applications_dir}/${d3d12_dll}"
+
+    ln -s \
+        ${applications_dir}/CrossOver.app/Contents/SharedSupport/CrossOver/bin/wine \
+        ${destroot}${prefix}/bin/wine
+    ln -s \
+        ${applications_dir}/CrossOver.app/Contents/SharedSupport/CrossOver/bin/wine \
+        ${destroot}${prefix}/bin/wine64
 }
 
 variant bigsur_icon description {Replace the icon with one that fits in better with macOS 11+} {
