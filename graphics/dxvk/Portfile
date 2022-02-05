@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        doitsujin dxvk 1.9.4 v
-revision            1
+revision            3
 
 categories          graphics
 maintainers         largeandhighquality.com:randy
@@ -30,7 +30,8 @@ checksums           dxvk-async.patch \
                     rmd160  bfc8c28b0d8abce63500830190977fbd8337c00d \
                     sha256  3c809a47ece756d137b91d9a6f472ba7ede102badcbf0ee252eb9e2d93fe2df0
 
-patchfiles          moltenvk.patch
+patchfiles          moltenvk.patch \
+                    macports_dxvk_conf.patch
 
 depends_build       port:mingw-w64 \
                     port:glslang \
@@ -40,12 +41,16 @@ extract.only        [lindex ${distfiles} 0]
 
 patch.pre_args      -p1
 
+post-patch {
+    set win_prefix [regsub -all "/" ${prefix} "\\\\\\\\\\\\\\\\"]
+    reinplace "s|@@PREFIX@@|${win_prefix}|g" ${worksrcpath}/src/util/config/config.cpp
+}
+
 configure {
-    array set prefixes {32 i686-w64-mingw32 64 x86_64-w64-mingw32}
     foreach arch [list 32 64] {
         system -W ${worksrcpath} "meson setup --buildtype release \
-            --cross-file build-win${arch}.txt --bindir bin --libdir lib \
-            --prefix ${destroot}${prefix}/$prefixes(${arch}) build.x${arch}"
+            --cross-file build-win${arch}.txt --bindir dxvk/x${arch} \
+            --prefix ${destroot}${prefix}/lib/wine/ build.x${arch}"
     }
 }
 
@@ -54,11 +59,12 @@ build {
     system "ninja -C ${worksrcpath}/build.x64"
 }
 
-destroot.violate_mtree  yes
-
 destroot {
     system "ninja install -C ${worksrcpath}/build.x32"
     system "ninja install -C ${worksrcpath}/build.x64"
+
+    # The import libraries aren’t needed, so delete them.
+    delete ${destroot}${prefix}/lib/wine/lib/
 
     set docdir ${destroot}${prefix}/share/doc/${subport}/
     xinstall -d -m 755 ${docdir}
@@ -66,14 +72,15 @@ destroot {
         README.md \
         LICENSE \
         ${docdir}
+
+    xinstall -m 755 ${worksrcpath}/setup_dxvk.sh ${destroot}${prefix}/bin/
+    xinstall -m 644 ${worksrcpath}/dxvk.conf ${destroot}${prefix}/etc/
 }
 
 variant async description {Apply DXVK async patches} {
     patchfiles-append \
-                    dxvk-async.patch
-    notes           "
-Set the environment variable `DXVK_ASYNC=1` or use `dxvk.enableAsync = true` in dxvk.conf to enable.
-"
+                    dxvk-async.patch \
+                    async_dxvk_conf.patch
 }
 
 default_variants +async
