@@ -5,22 +5,24 @@ PortGroup           github 1.0
 PortGroup           xcode 1.0
 PortGroup           xcodeversion 1.0
 
-github.setup        KhronosGroup MoltenVK 1.1.6 v
-revision            1
+github.setup        KhronosGroup MoltenVK 9366457b86831a6b67d44caf45440043e635eef4
+
+name                MoltenVK
+version             1.1.7
 
 set submodules {
                     USCiLab cereal 51cbda5f30e56c801c07fe3d3aba5d7fb9e6cca4 cereal
                     KhronosGroup Vulkan-Headers 8c1c27d5a9b9de8a17f500053bd08c7ca6bba19c Vulkan-Headers
-                    KhronosGroup SPIRV-Cross 7c3cb0b12c9965497b08403c82ac1b82846fa7be SPIRV-Cross
+                    KhronosGroup SPIRV-Cross 53d94a982e1d654515b44db5391de37f85489204 SPIRV-Cross
                     KhronosGroup glslang c9706bdda0ac22b9856f1aa8261e5b9e15cd20c5 glslang
                     KhronosGroup SPIRV-Tools 21e3f681e2004590c7865bc8c0195a4ab8e66c88 glslang/External/spirv-tools
                     KhronosGroup SPIRV-Headers 814e728b30ddd0f4509233099a3ad96fd4318c07 glslang/External/spirv-tools/external/spirv-headers
                     KhronosGroup Vulkan-Tools 691252756218fcbd1f0f8d7cc14e753123f08940 Vulkan-Tools
 }
-checksums           MoltenVK-1.1.6.tar.gz \
-                    rmd160  097ab781665eb1a39033349b3ebd43341562860b \
-                    sha256  195b91327e32b8c6f922de869dff3f30e37a47727c6daed3f67237ca54a979c7 \
-                    size    1020630 \
+checksums           MoltenVK-9366457b86831a6b67d44caf45440043e635eef4.tar.gz \
+                    rmd160  5fdeccd532111259ee0f2ed8cd5aa23de7d93f4a \
+                    sha256  f27ce42e3bea398b2627ba7268a148c19916402f9fd00ad600e1d63b1773bf2b \
+                    size    1020676 \
                     cereal-51cbda5f30e56c801c07fe3d3aba5d7fb9e6cca4.tar.gz \
                     rmd160  33a8f9bd682f36387d3d589410113c6dd1e18bc4 \
                     sha256  26361b539fe50eee308b564faa2742166d2922a7ab0bd4870ac55708581228c8 \
@@ -29,10 +31,10 @@ checksums           MoltenVK-1.1.6.tar.gz \
                     rmd160  bd4578164e11c85942c43e8ecbc01c8418af4294 \
                     sha256  e86b89a1d601a3efd26fccb2f907a8dca026e3bedf08ece6b6da85cc949b0853 \
                     size    1288450 \
-                    SPIRV-Cross-7c3cb0b12c9965497b08403c82ac1b82846fa7be.tar.gz \
-                    rmd160  af841865cf61a7819d15d1e88ab198bf0d90d12f \
-                    sha256  5bb6837e2b75db1a9e36e7d6eac40d905e3460ff3b5234f391adc6bdf6aadcdf \
-                    size    1535495 \
+                    SPIRV-Cross-53d94a982e1d654515b44db5391de37f85489204.tar.gz \
+                    rmd160  52744a97aaab3262bdbab333cee58ae3636447c8 \
+                    sha256  ce585a0f6fe14245bb799f67d66624e8122a520dc479a6da39778d94f36304b6 \
+                    size    1561690 \
                     glslang-c9706bdda0ac22b9856f1aa8261e5b9e15cd20c5.tar.gz \
                     rmd160  d70b40641711affda2d032eb0b951a9e027b9867 \
                     sha256  9ed562b906c3480b29730e46eb1536af2c82ae6a59d4d2ac93b7e764a2896372 \
@@ -66,7 +68,7 @@ long_description    ${name} is an implementation of the high-performance, \
 master_sites        ${master_sites}:${name}
 distfiles           ${distfiles}:${name}
 
-patchfiles          buildDependencies.patch
+patchfiles          dontUpdateDependencies.patch
 
 foreach {sub_author sub_project sub_commit sub_dest} ${submodules} {
     master_sites-append https://github.com/${sub_author}/${sub_project}/archive/${sub_commit}.tar.gz?dummy=:${sub_project}
@@ -101,21 +103,52 @@ post-extract {
     }
 }
 
+# Required to set up the build environment.
+configure {
+    system -W ${worksrcpath} "./fetchDependencies --none"
+}
+
 depends_build-append \
-                    path:bin/cmake:cmake
+                    path:bin/python3:python310
 
 patch.pre_args      -p1
 
-build.pre_args      -derivedDataPath ./DerivedData
+if [variant_isset universal] {
+    build.env-append    ARCHS=\"${configure.universal_archs}\"
+} else {
+    build.env-append    ARCHS=${configure.build_arch}
+}
 
-compiler.cxx_standard 2011
+build.pre_args     -derivedDataPath ./DerivedData
+
+compiler.cxx_standard 2017
 
 xcode.configuration Release
 xcode.project       MoltenVKPackaging.xcodeproj
 xcode.scheme        "MoltenVK Package (macOS only)"
 
+
 pre-build {
-    system -W ${worksrcpath} "./fetchDependencies --macos"
+    set xcode_project_arg [xcode::get_project_arg ExternalDependencies.xcodeproj]
+    set xcode_configuration_arg [xcode::get_configuration_arg Release]
+    set xcode_build_args [xcode::get_build_args]
+    set xcode_install_path_setting \
+        [xcode::get_install_path_setting ${xcode.destroot.path} ${xcode.destroot.type}]
+
+    system "echo ${build.dir}"
+    xcode::build_one_target \
+        "${xcode_project_arg} -scheme ExternalDependencies-macOS ${xcode_configuration_arg}" \
+        "${xcode_install_path_setting} ${xcode_build_args} ${xcode.build.settings}"
+
+    system -W ${worksrcpath} "
+        xcFrameworkStaging=External/build/Intermediates/XCFrameworkStaging
+        for target in glslang SPIRVTools SPIRVCross; do
+        xcodebuild -create-xcframework \
+            -output External/build/Release/\$target.xcframework \
+            -library \$xcFrameworkStaging/Release/Platform/lib\$target.a
+        done
+        ln -s Release External/build/Latest
+    "
 }
 
 destroot {
@@ -144,9 +177,3 @@ variant dxvk description {Apply patches to improve compatability with DXVK} {
     patchfiles-append \
                     dxvk.patch
 }
-
-variant universal {
-    build.post_args-append     -arch x86_64 -arch arm64
-}
-
-default_variants +dxvk
