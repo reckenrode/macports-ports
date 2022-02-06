@@ -16,11 +16,11 @@ platforms           macosx
 supported_archs     x86_64
 license             zlib
 
-distfiles           ${github.tag_prefix}${github.version}.tar.xz \
-                    dxvk-async.patch
+distfiles           ${github.tag_prefix}${github.version}.tar.xz:dxvk \
+                    dxvk-async.patch:dxvk-async
 
 master_sites-append \
-                    https://raw.githubusercontent.com/Sporif/dxvk-async/24daafd8e40d5ecde6901ebea2bf2098b4bd9b4e/
+                    https://raw.githubusercontent.com/Sporif/dxvk-async/24daafd8e40d5ecde6901ebea2bf2098b4bd9b4e/:dxvk-async
 
 checksums           dxvk-async.patch \
                     rmd160  ca36543cb08456a01e692a6f59122c24934c75f8 \
