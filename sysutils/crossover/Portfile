@@ -4,7 +4,7 @@ PortSystem          1.0
 
 name                crossover
 version             21.1.0
-revision            3
+revision            4
 
 categories          sysutils aqua
 maintainers         largeandhighquality.com:randy
@@ -66,13 +66,6 @@ destroot {
         -change /opt/cxoffice/lib64/libvkd3d.1.dylib @rpath/libvkd3d.1.dylib \
         ${destroot}${applications_dir}/${d3d12_dll}"
     system "codesign -f -s - ${destroot}${applications_dir}/${d3d12_dll}"
-
-    ln -s \
-        ${applications_dir}/CrossOver.app/Contents/SharedSupport/CrossOver/bin/wine \
-        ${destroot}${prefix}/bin/wine
-    ln -s \
-        ${applications_dir}/CrossOver.app/Contents/SharedSupport/CrossOver/bin/wine \
-        ${destroot}${prefix}/bin/wine64
 }
 
 variant bigsur_icon description {Replace the icon with one that fits in better with macOS 11+} {
