@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        doitsujin dxvk 1.9.4 v
-revision            3
+revision            4
 
 categories          graphics
 maintainers         largeandhighquality.com:randy
@@ -16,19 +16,12 @@ platforms           macosx
 supported_archs     x86_64
 license             zlib
 
-distfiles           ${github.tag_prefix}${github.version}.tar.xz:dxvk \
-                    dxvk-async.patch:dxvk-async
+distname            ${github.tag_prefix}${github.version}
 
-master_sites-append \
-                    https://raw.githubusercontent.com/Sporif/dxvk-async/24daafd8e40d5ecde6901ebea2bf2098b4bd9b4e/:dxvk-async
-
-checksums           dxvk-async.patch \
-                    rmd160  ca36543cb08456a01e692a6f59122c24934c75f8 \
-                    sha256  ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463 \
-                    size    16104 \
-                    [lindex ${distfiles} 0] \
+checksums           ${distfiles} \
                     rmd160  bfc8c28b0d8abce63500830190977fbd8337c00d \
-                    sha256  3c809a47ece756d137b91d9a6f472ba7ede102badcbf0ee252eb9e2d93fe2df0
+                    sha256  3c809a47ece756d137b91d9a6f472ba7ede102badcbf0ee252eb9e2d93fe2df0 \
+                    size    1168797
 
 patchfiles          moltenvk.patch \
                     macports_dxvk_conf.patch
@@ -37,7 +30,7 @@ depends_build       port:mingw-w64 \
                     port:glslang \
                     port:meson
 
-extract.only        [lindex ${distfiles} 0]
+extract.only        ${github.tag_prefix}${github.version}.tar.xz
 
 patch.pre_args      -p1
 
@@ -81,6 +74,15 @@ variant async description {Apply DXVK async patches} {
     patchfiles-append \
                     dxvk-async.patch \
                     async_dxvk_conf.patch
+
+    patch_sites-append \
+                    https://raw.githubusercontent.com/Sporif/dxvk-async/${github.version}/
+
+    checksums-append \
+                    dxvk-async.patch \
+                    rmd160  ca36543cb08456a01e692a6f59122c24934c75f8 \
+                    sha256  ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463 \
+                    size    16104
 }
 
 default_variants +async
